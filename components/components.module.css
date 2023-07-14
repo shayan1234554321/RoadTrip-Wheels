@@ -1,18 +1,24 @@
 .roundedButton {
-    border: none;
-    padding:  10px 30px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 40px;
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
+  border: none;
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 40px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .roundedButton:hover {
-    filter: brightness(0.9);
+  filter: brightness(0.9);
 }
 
 .roundedButton:active {
-    transition: 0s;
-    transform: scale(0.9);
+  transition: 0s;
+  transform: scale(0.9);
+}
+
+@media only screen and (max-width: 769px) {
+  .roundedButton {
+    font-size: 14px;
+  }
 }

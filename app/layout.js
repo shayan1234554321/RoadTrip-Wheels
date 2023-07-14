@@ -1,8 +1,10 @@
 "use client"
+import React from 'react'
 import './globals.css'
 import { StateContext } from '@/context/StateContext' 
 import Navigation from '@/layout/navigation'
 import { Inter } from 'next/font/google'
+import PropTypes from 'prop-types';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,10 +18,16 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
           <StateContext>
-            <Navigation />
-            {children}
+            <div className="mainBodyDiv" >
+              <Navigation />
+              {children}
+            </div>
           </StateContext>
         </body>
     </html>
   )
 }
+
+RootLayout.propTypes = {
+  children: PropTypes.node.isRequired
+};
