@@ -1,6 +1,7 @@
 "use client"
 import './globals.css'
 import { StateContext } from '@/context/StateContext' 
+import Navigation from '@/layout/navigation'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
           <StateContext>
+            <Navigation />
             {children}
           </StateContext>
         </body>
