@@ -2,17 +2,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
 
 :root {
-    --orange: #FFB015;
-    --green: #97BF0F;
-    --white: #FFFFFF;
-    --black: #000000;
-    --blue: #15C7FF;
-    --main-font: 'Poppins', sans-serif;
-    --secondary-font: 'Quattrocento Sans', sans-serif;
+  --orange: #ffb015;
+  --green: #97bf0f;
+  --white: #fff;
+  --black: #000;
+  --blue: #15c7ff;
+  --main-font: 'Poppins', sans-serif;
+  --secondary-font: 'Quattrocento Sans', sans-serif;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    font-family: var(--main-font);
+  padding: 0;
+  margin: 0;
+  font-family: var(--main-font);
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.mainBodyDiv {
+  display: flex;
 }
