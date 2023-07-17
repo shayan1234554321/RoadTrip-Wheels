@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./page.module.css";
 import arrow from "@/assets/images/arrow.png";
+import PropTypes from 'prop-types';
 
 const ItemContainer = ({ image, name, description }) => {
   return (
@@ -139,6 +140,12 @@ const Home = () => {
       </div>
     </div>
   );
+};
+
+ItemContainer.propTypes = {
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 };
 
 export default Home;
