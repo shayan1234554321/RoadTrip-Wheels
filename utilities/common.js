@@ -3,7 +3,8 @@ export const colors = {
     green: "#97BF0F",
     white: "#FFFFFF",
     black: "#000000",
-    blue: "#15C7FF"
+    blue: "#15C7FF",
+    red: "#FF3F15"
 }
 
 export const api = {

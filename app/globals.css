@@ -7,6 +7,7 @@
   --white: #fff;
   --black: #000;
   --blue: #15c7ff;
+  --red: #FF3F15;
   --main-font: 'Poppins', sans-serif;
   --secondary-font: 'Quattrocento Sans', sans-serif;
 }
@@ -24,4 +25,25 @@ body {
 
 .mainBodyDiv {
   display: flex;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

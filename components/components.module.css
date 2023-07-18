@@ -1,3 +1,4 @@
+/* -------------- button ------------ */
 .roundedButton {
   border: none;
   padding: 10px 30px;
@@ -6,6 +7,7 @@
   border-radius: 40px;
   transition: 0.3s ease-in-out;
   cursor: pointer;
+  width: max-content;
 }
 
 .roundedButton:hover {
@@ -21,4 +23,49 @@
   .roundedButton {
     font-size: 14px;
   }
+}
+
+/* -------------- popup ------------ */
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.popupInside{
+  width: 50%;
+  max-width: 500px;
+  min-width: 300px;
+  min-height: 100px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+.popupInside .closeIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  font-weight: 200;
+  background-color: var(--red);
+  transform: rotate(45deg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: white;
 }
