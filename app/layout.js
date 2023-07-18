@@ -5,6 +5,7 @@ import { StateContext } from '@/context/StateContext'
 import Navigation from '@/layout/navigation'
 import { Inter } from 'next/font/google'
 import PropTypes from 'prop-types';
+import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,6 +15,20 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const router = usePathname();
+  if (router == "/registration") {
+    return(
+      <html lang="en">
+      <body className={inter.className}>
+          <StateContext>
+            <div className="mainBodyDiv" >
+              {children}
+            </div>
+          </StateContext>
+        </body>
+    </html>
+    )
+  }
   return (
     <html lang="en">
       <body className={inter.className}>
