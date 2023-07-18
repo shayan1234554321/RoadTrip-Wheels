@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--orange);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+.logo {
+  width: max(12vw, 100px);
+  height: auto;
+}
+
+.title {
+  font-family: var(--secondary-font);
+  font-size: 80px;
+  font-weight: 400;
+  color: var(--white)
+}
+
+.formHolder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
