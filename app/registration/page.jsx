@@ -27,8 +27,6 @@ const Registration = () => {
         const user = await data.data
         setUsername(user.username);
         console.log(user)
-        console.log(username)
-        
       } catch (error) {
         console.log(error)
       }
@@ -46,6 +44,7 @@ const Registration = () => {
           </div>
           <div className={styles.formHolder}>
             <h1 className={styles.title}>THE ROADTRIP WHEELS</h1>
+            {username}
             {login && 
               <form className={styles.form}>
                 <input className={styles.input} id='username' type="text" placeholder="username"/>
