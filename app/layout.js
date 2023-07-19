@@ -1,6 +1,5 @@
 'use client'
 import React from "react";
-import { usePathname } from 'next/navigation'
 import "./globals.css";
 import { StateContext } from "@/context/StateContext";
 import Navigation from "@/layout/navigation";
@@ -15,21 +14,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const router = usePathname();
-  if (router == "/registration") {
-    return(
-      <html lang="en">
-      <body className={inter.className}>
-          <StateContext>
-            <div className="mainBodyDiv" >
-              {children}
-              <Toaster />
-            </div>
-          </StateContext>
-        </body>
-    </html>
-    );
-  }
   return (
     <html lang="en">
       <body className={inter.className}>
