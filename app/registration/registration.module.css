@@ -37,4 +37,40 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.input {
+  border-radius: 38px;
+  border: none;
+  outline: none;
+  width: 324px;
+  height: 46px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.input::placeholder {
+  color: var(--black);
+}
+
+.submit {
+  border: none;
+  border-radius:  0px 0px 38px 38px;
+  width: 129px;
+  height: 57px;
+  cursor: pointer;
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.logoutText {
+  color: var(--white);
+  font-size: 25px;
+  padding-bottom: 10px;
+  width: 80%;
+  text-align: center;
 }
