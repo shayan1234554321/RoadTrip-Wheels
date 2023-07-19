@@ -6,9 +6,8 @@
   flex-direction: column;
   background-image: url('../../assets/images/car-background.png');
   background-repeat: no-repeat;
-  background-size: fit;
+  background-size: contain;
   background-position: center;
-
 }
 
 .header {
@@ -20,7 +19,8 @@
 }
 
 .logo {
-  width: max(12vw, 100px);
+  width: 12vw;
+  max-width: 100px;
   height: auto;
 }
 
@@ -28,7 +28,7 @@
   font-family: var(--secondary-font);
   font-size: 80px;
   font-weight: 400;
-  color: var(--white)
+  color: var(--white);
 }
 
 .formHolder {
@@ -64,7 +64,7 @@
 
 .submit {
   border: none;
-  border-radius:  0px 0px 38px 38px;
+  border-radius: 0 0 38px 38px;
   width: 129px;
   height: 57px;
   cursor: pointer;
@@ -81,11 +81,11 @@
   text-align: center;
 }
 
- @media (width < 768px ){
+@media (width < 768px) {
   .container {
     background-position: -181vw  41vh;
   }
-  
+
   .formHolder {
     justify-content: flex-start;
     padding-top: 16vh;
@@ -114,4 +114,4 @@
   .logoutText {
     font-size: 20px;
   }
- }
+}
