@@ -74,8 +74,8 @@ const AddRemoveCar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true);
     if (form.imageFile) {
+      setLoading(true);
       const formData = new FormData();
       formData.append("file", form.imageFile);
       formData.append(
