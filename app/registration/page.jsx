@@ -7,7 +7,9 @@ import Image from 'next/image';
 import logo from '@/assets/images/logo-white.png';
 import { useStateContext } from '@/context/StateContext';
 import { useRouter } from 'next/navigation';
-// import { api } from '@/utilities/common';
+import axios from 'axios';
+import toast from "react-hot-toast";
+import { Api } from '@/utilities/common';
 
 const Registration = () => {
    const [login, setLogin] = useState(true);
@@ -23,15 +25,23 @@ const Registration = () => {
     const handleSinginSubmit = async (e) => {
       e.preventDefault();
       const formUsername = document.getElementById('username').value;
+      if (formUsername === '') {
+        toast.error("Please enter a username");
+      }
       try  {
-        const response =  await fetch(`http://127.0.0.1:3000/Api/v1/users/${formUsername}`)
-        const data = await response.json();
+        const response =  await axios.get(Api.getUser(formUsername))
+        const data = await response.data;
         const user = await data.data
         setUsername(user.username);
         setLoggedIn(true);
+        toast.success(`Welcome ${user.username}`);
         push('/');
       } catch (error) {
-        console.log(error)
+        if(formUsername !== '') {
+          toast.error(error.response.data.message);
+        }else {
+          toast.error("Something went wrong");
+        }
       }
     }
 
@@ -54,7 +64,7 @@ const Registration = () => {
             <h1 className={styles.title}>THE ROADTRIP WHEELS</h1>
             {login && !loggedIn && 
               <form className={styles.form}>
-                <input className={styles.input}  id='username' type="text" placeholder="username"/>
+                <input className={styles.input}  id='username' type="text" placeholder="username" required/>
                 <input className={styles.submit} type="submit" onClick={handleSinginSubmit} value="SIGNIN"/>
               </form>
             }
