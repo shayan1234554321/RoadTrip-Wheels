@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
 const Context = createContext();
 
+
 export const StateContext = ({ children }) => {
   const [username, setUsername] = useState("a great name");
   const [fullName, setFullName] = useState("a great name");

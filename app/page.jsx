@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './registration.module.css'
 import { RoundedButton } from '@/components/buttons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import logo from '@/assets/images/logo-white.png';
 import { useStateContext } from '@/context/StateContext';
@@ -15,6 +15,13 @@ const Registration = () => {
    const [login, setLogin] = useState(true);
    const { username, setUsername, loggedIn, setLoggedIn } = useStateContext();
    const { push } = useRouter();
+
+   useEffect(() => {
+    if(loggedIn){
+      push('/home')
+    }
+  })
+
    const handleSingup = () => {
     setLogin(!login);
    }
