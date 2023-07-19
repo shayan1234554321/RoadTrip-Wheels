@@ -1,3 +1,5 @@
+"use client"
+
 import { useStateContext } from "@/context/StateContext";
 import React, { useState } from "react";
 import styles from "./layout.module.css";
