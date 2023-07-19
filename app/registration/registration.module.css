@@ -80,3 +80,38 @@
   width: 80%;
   text-align: center;
 }
+
+ @media (width < 768px ){
+  .container {
+    background-position: -181vw  41vh;
+  }
+  
+  .formHolder {
+    justify-content: flex-start;
+    padding-top: 16vh;
+  }
+
+  .title {
+    font-size: 36px;
+    text-align: center;
+    width: 80%;
+  }
+
+  .form {
+    padding-top: 20px;
+  }
+
+  .input {
+    width: 252px;
+    height: 46px;
+  }
+
+  .submit {
+    width: 129px;
+    height: 43px;
+  }
+
+  .logoutText {
+    font-size: 20px;
+  }
+ }
