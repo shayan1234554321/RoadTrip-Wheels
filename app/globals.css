@@ -1,14 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+}
+
 :root {
   --orange: #ffb015;
   --green: #97bf0f;
   --white: #fff;
   --black: #000;
   --blue: #15c7ff;
+  --red: #ff3f15;
   --main-font: 'Poppins', sans-serif;
   --secondary-font: 'Quattrocento Sans', sans-serif;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 * {

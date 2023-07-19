@@ -2,9 +2,10 @@ import React from "react";
 import { colors } from "@/utilities/common";
 import styles from "./components.module.css";
 import HashLoader from "react-spinners/HashLoader";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export const RoundedButton = ({
+  type = "button",
   color,
   inverted = false,
   loading = false,
@@ -13,19 +14,17 @@ export const RoundedButton = ({
 }) => {
   return (
     <button
+      type={type}
       {...rest}
       className={styles.roundedButton}
       style={{
         backgroundColor: inverted ? colors.white : color,
         color: inverted ? color : colors.white,
-        pointerEvents: loading? "none":""
+        pointerEvents: loading ? "none" : "",
       }}
     >
       {loading ? (
-        <HashLoader
-          color={inverted ? color : colors.white}
-          size={20}
-        />
+        <HashLoader color={inverted ? color : colors.white} size={20} />
       ) : (
         children
       )}
@@ -34,8 +33,9 @@ export const RoundedButton = ({
 };
 
 RoundedButton.propTypes = {
+  type: PropTypes.string,
   color: PropTypes.string,
   inverted: PropTypes.bool,
   loading: PropTypes.bool,
-  children: PropTypes.node  
+  children: PropTypes.node,
 };
