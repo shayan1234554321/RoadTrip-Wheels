@@ -48,6 +48,7 @@ const Registration = () => {
     const handleLogout = () => {
       setUsername('');
       setLoggedIn(false);
+      toast.success(`You have been logged out`);
     }
     return (
         <div className={styles.container}>
