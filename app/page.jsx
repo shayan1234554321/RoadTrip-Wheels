@@ -35,7 +35,7 @@ const Registration = () => {
         setUsername(user.username);
         setLoggedIn(true);
         toast.success(`Welcome ${user.username}`);
-        push('/');
+        push('/home');
       } catch (error) {
         if(formUsername !== '') {
           toast.error(error.response.data.message);
@@ -68,7 +68,7 @@ const Registration = () => {
           toast.success("User created successfully");
           setUsername(formData.username);
           setLoggedIn(true);
-          push('/');
+          push('/home');
         }
       } catch (error) {
         toast.error(error.response.data.message);

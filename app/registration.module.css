@@ -4,7 +4,7 @@
   background-color: var(--orange);
   display: flex;
   flex-direction: column;
-  background-image: url('../../assets/images/car-background.png');
+  background-image: url('../assets/images/car-background.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
