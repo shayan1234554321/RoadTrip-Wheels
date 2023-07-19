@@ -1,11 +1,33 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RoundedButton } from "@/components/buttons";
 import style from "./page.module.css";
-import { colors } from "@/utilities/common";
+import { colors, Api } from "@/utilities/common";
 import Popup from "@/components/popup";
+import toast from "react-hot-toast";
+import axios from "axios";
 
-const CarItem = ({ name, description, image, cost_per_day }) => {
+const CarItem = ({ id, name, description, image, cost_per_day, setData }) => {
+  const [loading, setLoading] = useState(false);
+
+  const deleteCar = async () => {
+    setLoading(true);
+    try {
+      toast(`Deleting ${name} `);
+      const response = await axios.delete(Api.deleteCar(id));
+      if (response.status === 200) {
+        toast.success("Car deleted successfully!");
+        setData((prev) => prev.filter((car) => car.id !== id));
+      } else {
+        toast.error("Something went wrong, try again");
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className={style.carItem}>
       <div className={style.left}>
@@ -18,7 +40,9 @@ const CarItem = ({ name, description, image, cost_per_day }) => {
         <h4>
           Description <span>{description}</span>
         </h4>
-        <RoundedButton color={colors.red}>REMOVE</RoundedButton>
+        <RoundedButton loading={loading} onClick={deleteCar} color={colors.red}>
+          REMOVE
+        </RoundedButton>
       </div>
       <div className={style.right}>
         <div className={style.imageContainer}>
@@ -31,50 +55,82 @@ const CarItem = ({ name, description, image, cost_per_day }) => {
 
 const AddRemoveCar = () => {
   const [show, setShow] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
     cost_per_day: 0,
     imageFile: null,
     description: "",
   });
-
-  const response = [
-    {
-      image: "https://i.ibb.co/5KWVYn6/range.png",
-      name: "Range Rover",
-      description: "A great choice for traveling with your besties",
-      cost_per_day: "27",
-    },
-    {
-      image: "https://i.ibb.co/mHgRBsq/chevrolet.png",
-      name: "Chevrolet",
-      description: "A great choice for traveling with your besties",
-      cost_per_day: "13",
-    },
-    {
-      image: "https://i.ibb.co/s5jgd7R/fortuner.png",
-      name: "Fortuner",
-      description: "A great choice for traveling with your besties",
-      cost_per_day: "23",
-    },
-    {
-      image: "https://i.ibb.co/s5jgd7R/fortuner.png",
-      name: "Fortuner",
-      description: "A great choice for traveling with your besties",
-      cost_per_day: "23",
-    },
-    {
-      image: "https://i.ibb.co/s5jgd7R/fortuner.png",
-      name: "Fortuner",
-      description: "A great choice for traveling with your besties",
-      cost_per_day: "23",
-    },
-  ];
+  const [data, setData] = useState([]);
 
   const handleChange = (e, name) => {
     setForm((prev) => ({ ...prev, [name]: e.target.value }));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    if (form.imageFile) {
+      const formData = new FormData();
+      formData.append("file", form.imageFile);
+      formData.append(
+        "upload_preset",
+        process.env.NEXT_PUBLIC_CLOUDINARY_PRESET
+      );
+
+      try {
+        toast("Uploading car");
+        // Get image url from cloudinary
+
+        const cloudinaryResponse = await axios.post(
+          Api.cloudinary(process.env.NEXT_PUBLIC_CLOUDINARY_NAME),
+          formData
+        );
+
+        const image = cloudinaryResponse.data.url;
+
+        // upload car to database
+
+        const response = await axios.post(Api.createCar, {
+          name: form.name,
+          image: image,
+          cost_per_day: form.cost_per_day,
+          description: form.description,
+        });
+
+        if (response.status === 200) {
+          setData((prev) => [...prev, response.data.data]);
+          toast.success("Car added successfully");
+        } else {
+          toast.error("There was an error adding the car");
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("There was an error adding the car");
+      } finally {
+        setLoading(false);
+        setShow(false);
+      }
+    } else {
+      toast.error("Please select an image");
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const response = await axios.get(Api.getCars);
+
+      setData(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className={style.addRemoveContainer}>
@@ -85,12 +141,12 @@ const AddRemoveCar = () => {
       </div>
       <h1>ALL CARS</h1>
       <div className={style.itemsContainer}>
-        {response.map((item, i) => {
-          return <CarItem key={item.name + i} {...item} />;
+        {data?.map((item, i) => {
+          return <CarItem key={item.name + i} {...item} setData={setData} />;
         })}
       </div>
       <Popup show={show} setShow={setShow}>
-        <form className={style.form}>
+        <form className={style.form} onSubmit={handleSubmit}>
           <div className={style.flexRow}>
             <h4>Name</h4>
             <input
@@ -122,21 +178,21 @@ const AddRemoveCar = () => {
               <h4>Image</h4>
               <label htmlFor="getImage">Select Image</label>
               <input
-                required
                 type="file"
                 accept="image/*"
                 id="getImage"
                 onChange={(e) =>
                   setForm((prev) => ({
                     ...prev,
-                    imageFile: e.target.files[0]
-                      ? URL.createObjectURL(e.target.files[0])
-                      : "",
+                    imageFile: e.target.files[0] ? e.target.files[0] : "",
                   }))
                 }
               />
             </div>
-            <img src={form.imageFile} alt="" />
+            <img
+              src={form.imageFile ? URL.createObjectURL(form.imageFile) : ""}
+              alt=""
+            />
           </div>
           <div className={style.flexRow}>
             <h4>Description</h4>
@@ -152,7 +208,7 @@ const AddRemoveCar = () => {
             />
           </div>
           <div className={style.buttonContainer}>
-            <RoundedButton type="submit" color={colors.green}>
+            <RoundedButton loading={loading} type="submit" color={colors.green}>
               ADD CAR
             </RoundedButton>
           </div>
