@@ -50,6 +50,31 @@ const Registration = () => {
       setLoggedIn(false);
       toast.success(`You have been logged out`);
     }
+
+    const handleSingupSubmit = async (e) => {
+      let formData;
+      e.preventDefault();
+      if(document.getElementById('usernamesignup').value === '' || document.getElementById('full-name').value === '') {
+        toast.error("Please fill in all fields");
+      }else {
+        formData = {
+          username: document.getElementById('usernamesignup').value,
+          full_name: document.getElementById('full-name').value
+        }
+      }
+      try {
+        const response = await axios.post(Api.createUser, formData)
+        if (response.status == 200){
+          toast.success("User created successfully");
+          setUsername(formData.username);
+          setLoggedIn(true);
+          push('/');
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+
+    }
     return (
         <div className={styles.container}>
           <div className={styles.header}>
@@ -74,7 +99,20 @@ const Registration = () => {
                 <p className={styles.logoutText}>You are already logged in as: {username}</p>
                 <button className={styles.submit} onClick={handleLogout}>Log out</button>
               </div>
-              }
+            }
+            {!login && !loggedIn &&
+            <form className={styles.form}>
+              <input className={styles.input}  id='full-name' type="text" placeholder="Full name" required/>
+              <input className={styles.input}  id='usernamesignup' type="text" placeholder="username" required/>
+              <input className={styles.submit} type="submit" onClick={handleSingupSubmit} value="SIGNUP"/>
+            </form>
+            }
+            {!login && loggedIn &&
+            <div className={styles.form}>
+              <p className={styles.logoutText}>You are already logged in as: {username}, you need to logout to register a new user</p>
+              <button className={styles.submit} onClick={handleLogout}>Log out</button>
+            </div>
+            }
           </div>
         </div>
     );
