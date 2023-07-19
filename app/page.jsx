@@ -35,6 +35,7 @@ const Registration = () => {
         setUsername(user.username);
         setLoggedIn(true);
         toast.success(`Welcome ${user.username}`);
+        localStorage.setItem('username', JSON.stringify(user.username));
         push('/home');
       } catch (error) {
         if(formUsername !== '') {
