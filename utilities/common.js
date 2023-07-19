@@ -8,6 +8,7 @@ export const colors = {
     red: "#FF3F15"
 }
 
+/* eslint-disable no-undef */
 export const Api = {
     getCars : `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/cars` , // method: get
     
@@ -23,3 +24,4 @@ export const Api = {
     deleteReservation : (userId , id) => `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/users/${userId}/reservations/${id}`, // method: delete
     cloudinary: (cloudName) => `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
 }
+/* eslint-enable no-undef */

@@ -1,4 +1,6 @@
 "use client";
+/* eslint-disable no-undef */
+
 import React, { useEffect, useState } from "react";
 import { RoundedButton } from "@/components/buttons";
 import style from "./page.module.css";
@@ -6,6 +8,7 @@ import { colors, Api } from "@/utilities/common";
 import Popup from "@/components/popup";
 import toast from "react-hot-toast";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 const CarItem = ({ id, name, description, image, cost_per_day, setData }) => {
   const [loading, setLoading] = useState(false);
@@ -217,5 +220,15 @@ const AddRemoveCar = () => {
     </div>
   );
 };
+
+CarItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired, 
+  image: PropTypes.string.isRequired,
+  cost_per_day: PropTypes.number.isRequired,
+  setData: PropTypes.func.isRequired
+};
+
 
 export default AddRemoveCar;

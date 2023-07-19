@@ -33,6 +33,7 @@ export const RoundedButton = ({
 };
 
 RoundedButton.propTypes = {
+  type: PropTypes.string,
   color: PropTypes.string,
   inverted: PropTypes.bool,
   loading: PropTypes.bool,
