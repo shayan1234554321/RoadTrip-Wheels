@@ -22,13 +22,10 @@ const Registration = () => {
     }
   })
 
-   const handleSignup = () => {
+   const handleToggle = () => {
     setLogin(!login);
    }
 
-   const handleSignin = () => {
-    setLogin(!login);
-    }
     const handleSigninSubmit = async (e) => {
       e.preventDefault();
       const formUsername = document.getElementById('username').value;
@@ -88,10 +85,10 @@ const Registration = () => {
           <div className={styles.header}>
             <Image src={logo} alt="logo" className={styles.logo}/>
             {login && 
-              <RoundedButton  onClick = {handleSignup} inverted={true} color={'var(--orange)'}>SIGN UP</RoundedButton>
+              <RoundedButton  onClick = {handleToggle} inverted={true} color={'var(--orange)'}>SIGN UP</RoundedButton>
             }
             {!login && 
-              <RoundedButton onClick = {handleSignin}  inverted={true} color={'var(--orange)'}>SIGN IN</RoundedButton>
+              <RoundedButton onClick = {handleToggle}  inverted={true} color={'var(--orange)'}>SIGN IN</RoundedButton>
             }
           </div>
           <div className={styles.formHolder}>
