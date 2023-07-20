@@ -26,7 +26,7 @@
   height: 10vh;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   align-items: center;
   z-index: 3;
 }
