@@ -4,10 +4,22 @@
   background-color: var(--orange);
   display: flex;
   flex-direction: column;
-  background-image: url('../assets/images/car-background.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+}
+
+.bgImage {
+  position: absolute;
+  top: calc(50% + 100px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 70%;
+  max-width: 1200px;
+  min-width: 900px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bgImage img {
+  width: 100%;
 }
 
 .header {
@@ -16,28 +28,34 @@
   justify-content: space-between;
   padding: 1rem 2rem;
   align-items: center;
+  z-index: 3;
 }
 
 .logo {
   width: 12vw;
   max-width: 100px;
   height: auto;
+  min-width: 60px;
 }
 
 .title {
   font-family: var(--secondary-font);
-  font-size: 80px;
+  font-size: 70px;
   font-weight: 400;
   color: var(--white);
   text-align: center;
+  letter-spacing: 10px;
+  margin-bottom: 30px;
 }
 
 .formHolder {
+  z-index: 3;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
 }
 
 .form {
@@ -83,19 +101,33 @@
 }
 
 @media (width < 769px) {
-  .container {
-    background-position: 1vw  56vh;
-  }
-
   .formHolder {
     justify-content: flex-start;
-    padding-top: 16vh;
+    padding-top: 10vh;
+  }
+
+  .bgImage {
+    top: 55%;
+    left: 0;
+    transform: translateX(0) translateY(0);
+    width: 95vw;
+    height: 40vh;
+    min-width: 80vw;
+    display: flex;
+    justify-content: end;
+  }
+
+  .bgImage img {
+    height: 40vh;
+    width: auto;
   }
 
   .title {
     font-size: 36px;
     text-align: center;
-    width: 80%;
+    width: 100%;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
   }
 
   .form {

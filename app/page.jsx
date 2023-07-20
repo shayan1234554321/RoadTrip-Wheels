@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Api } from "@/utilities/common";
+import car from '@/assets/images/car-background.png'
 
 const Registration = () => {
   const [login, setLogin] = useState(true);
@@ -22,7 +23,7 @@ const Registration = () => {
     if (loggedIn) {
       push("/home");
     }
-  });
+  },[]);
 
   const handleToggle = () => {
     setLogin(!login);
@@ -167,6 +168,9 @@ const Registration = () => {
             </button>
           </div>
         )}
+      </div>
+      <div className={styles.bgImage}>
+        <img src={car.src} alt="background image" />
       </div>
     </div>
   );
