@@ -92,7 +92,7 @@
   font-weight: 700;
 }
 
-.submit:active{
+.submit:active {
   filter: brightness(0.8);
 }
 
