@@ -92,6 +92,10 @@
   font-weight: 700;
 }
 
+.submit:active{
+  filter: brightness(0.8);
+}
+
 .logoutText {
   color: var(--white);
   font-size: 25px;

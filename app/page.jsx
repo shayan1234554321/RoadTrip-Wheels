@@ -23,7 +23,7 @@ const Registration = () => {
     if (loggedIn) {
       push("/home");
     }
-  },[]);
+  },[loggedIn]);
 
   const handleToggle = () => {
     setLogin(!login);
