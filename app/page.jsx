@@ -22,14 +22,14 @@ const Registration = () => {
     }
   })
 
-   const handleSingup = () => {
+   const handleSignup = () => {
     setLogin(!login);
    }
 
-   const handleSingin = () => {
+   const handleSignin = () => {
     setLogin(!login);
     }
-    const handleSinginSubmit = async (e) => {
+    const handleSigninSubmit = async (e) => {
       e.preventDefault();
       const formUsername = document.getElementById('username').value;
       if (formUsername === '') {
@@ -59,7 +59,7 @@ const Registration = () => {
       toast.success(`You have been logged out`);
     }
 
-    const handleSingupSubmit = async (e) => {
+    const handleSignupSubmit = async (e) => {
       let formData;
       e.preventDefault();
       if(document.getElementById('usernamesignup').value === '' || document.getElementById('full-name').value === '') {
@@ -88,10 +88,10 @@ const Registration = () => {
           <div className={styles.header}>
             <Image src={logo} alt="logo" className={styles.logo}/>
             {login && 
-              <RoundedButton  onClick = {handleSingup} inverted={true} color={'var(--orange)'}>SIGN UP</RoundedButton>
+              <RoundedButton  onClick = {handleSignup} inverted={true} color={'var(--orange)'}>SIGN UP</RoundedButton>
             }
             {!login && 
-              <RoundedButton onClick = {handleSingin}  inverted={true} color={'var(--orange)'}>SIGN IN</RoundedButton>
+              <RoundedButton onClick = {handleSignin}  inverted={true} color={'var(--orange)'}>SIGN IN</RoundedButton>
             }
           </div>
           <div className={styles.formHolder}>
@@ -99,7 +99,7 @@ const Registration = () => {
             {login && !loggedIn && 
               <form className={styles.form}>
                 <input className={styles.input}  id='username' type="text" placeholder="username" required/>
-                <input className={styles.submit} type="submit" onClick={handleSinginSubmit} value="SIGNIN"/>
+                <input className={styles.submit} type="submit" onClick={handleSigninSubmit} value="SIGNIN"/>
               </form>
             }
             {login && loggedIn && 
@@ -112,7 +112,7 @@ const Registration = () => {
             <form className={styles.form}>
               <input className={styles.input}  id='full-name' type="text" placeholder="Full name" required/>
               <input className={styles.input}  id='usernamesignup' type="text" placeholder="username" required/>
-              <input className={styles.submit} type="submit" onClick={handleSingupSubmit} value="SIGNUP"/>
+              <input className={styles.submit} type="submit" onClick={handleSignupSubmit} value="SIGNUP"/>
             </form>
             }
             {!login && loggedIn &&
