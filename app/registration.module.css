@@ -82,7 +82,7 @@
   text-align: center;
 }
 
-@media (width < 768px) {
+@media (width < 769px) {
   .container {
     background-position: 1vw  56vh;
   }
