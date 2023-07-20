@@ -13,6 +13,8 @@ import { Api } from '@/utilities/common';
 
 const Registration = () => {
    const [login, setLogin] = useState(true);
+   const [formUsername, setFormUsername] = useState(true);
+   const [formFullname, setFormFullname] = useState(true);
    const { username, setUsername, loggedIn, setLoggedIn } = useStateContext();
    const { push } = useRouter();
 
@@ -28,7 +30,6 @@ const Registration = () => {
 
     const handleSigninSubmit = async (e) => {
       e.preventDefault();
-      const formUsername = document.getElementById('username').value;
       if (formUsername === '') {
         toast.error("Please enter a username");
       }
@@ -59,12 +60,12 @@ const Registration = () => {
     const handleSignupSubmit = async (e) => {
       let formData;
       e.preventDefault();
-      if(document.getElementById('usernamesignup').value === '' || document.getElementById('full-name').value === '') {
+      if( formUsername === '' || formFullname === '') {
         toast.error("Please fill in all fields");
       }else {
         formData = {
-          username: document.getElementById('usernamesignup').value,
-          full_name: document.getElementById('full-name').value
+          username: formUsername,
+          full_name: formFullname
         }
       }
       try {
@@ -95,7 +96,7 @@ const Registration = () => {
             <h1 className={styles.title}>THE ROADTRIP WHEELS</h1>
             {login && !loggedIn && 
               <form className={styles.form}>
-                <input className={styles.input}  id='username' type="text" placeholder="username" required/>
+                <input className={styles.input} onChange={(e)=>setFormUsername(e.target.value)} type="text" placeholder="username" required/>
                 <input className={styles.submit} type="submit" onClick={handleSigninSubmit} value="SIGNIN"/>
               </form>
             }
@@ -107,8 +108,8 @@ const Registration = () => {
             }
             {!login && !loggedIn &&
             <form className={styles.form}>
-              <input className={styles.input}  id='full-name' type="text" placeholder="Full name" required/>
-              <input className={styles.input}  id='usernamesignup' type="text" placeholder="username" required/>
+              <input className={styles.input} onChange={(e)=>setFormFullname(e.target.value)} type="text" placeholder="Full name" required/>
+              <input className={styles.input} onChange={(e)=>setFormUsername(e.target.value)} type="text" placeholder="username" required/>
               <input className={styles.submit} type="submit" onClick={handleSignupSubmit} value="SIGNUP"/>
             </form>
             }
