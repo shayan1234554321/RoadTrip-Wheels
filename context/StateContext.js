@@ -1,12 +1,21 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 const Context = createContext();
+
 
 export const StateContext = ({ children }) => {
   const [username, setUsername] = useState("a great name");
   const [fullName, setFullName] = useState("a great name");
+  const [loggedIn, setLoggedIn] = useState(false);
+
+useEffect(() => {
+  if(localStorage.getItem("username")) {
+    setUsername(JSON.parse(localStorage.getItem("username")));
+    setLoggedIn(true);
+  }
+}, []);
 
   return (
     <Context.Provider
@@ -15,6 +24,8 @@ export const StateContext = ({ children }) => {
         setUsername,
         fullName,
         setFullName,
+        loggedIn,
+        setLoggedIn,
       }}
     >
       {children}
