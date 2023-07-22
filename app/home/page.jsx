@@ -3,14 +3,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import style from './page.module.css';
 import arrow from '@/assets/images/arrow.png';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
-const ItemContainer = ({ image, name, description }) => {
+const ItemContainer = ({ id, image, name, description }) => {
   return (
     <div className={style.itemContainer}>
       <div className={style.inside}>
         <div>
           <div className={style.bgCircle}></div>
-          <img src={image} alt='item' />
+          <Link href={`/cars?id=${id}`}>
+            <img src={image} alt='item' />
+          </Link>
         </div>
         <h3>{name}</h3>
         <h2>.........</h2>
