@@ -151,6 +151,7 @@ const Home = () => {
 };
 
 ItemContainer.propTypes = {
+  id: PropTypes.integer.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
