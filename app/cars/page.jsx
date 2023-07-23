@@ -3,11 +3,12 @@
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
 
-export default function SearchBar() {
-  const searchParams = useSearchParams();
+import style from './page.module.css';
 
+export default function page() {
+  const searchParams = useSearchParams();
   const id = searchParams.get('id');
 
-  return <>{id}</>;
+  return <div className={style.id}>{id}</div>;
 }
 
