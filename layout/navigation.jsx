@@ -13,7 +13,7 @@ import { RoundedButton } from "@/components/buttons";
 import { useRouter, usePathname } from "next/navigation";
 
 const Navigation = () => {
-  const { setFullName, setUsername, setLoggedIn } = useStateContext();
+  const { setUser, setLoggedIn } = useStateContext();
   const [menuShow, setMenuShow] = useState(false);
   const router = useRouter();
 
@@ -53,9 +53,8 @@ const Navigation = () => {
   ];
 
   const handleLogout = () => {
-    setFullName(null);
-    setUsername(null);
-    localStorage.removeItem("username");
+    setUser({})
+    localStorage.removeItem("user");
     setLoggedIn(false);
     router.push("/");
   };

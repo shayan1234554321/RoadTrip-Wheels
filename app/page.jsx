@@ -16,7 +16,7 @@ const Registration = () => {
   const [login, setLogin] = useState(true);
   const [formUsername, setFormUsername] = useState(true);
   const [formFullname, setFormFullname] = useState(true);
-  const { username, setUsername, loggedIn, setLoggedIn } = useStateContext();
+  const { user , setUser , loggedIn, setLoggedIn } = useStateContext();
   const { push } = useRouter();
 
   useEffect(() => {
@@ -38,10 +38,10 @@ const Registration = () => {
       const response = await axios.get(Api.getUser(formUsername));
       const data = await response.data;
       const user = await data.data;
-      setUsername(user.username);
+      setUser(user);
       setLoggedIn(true);
       toast.success(`Welcome ${user.username}`);
-      localStorage.setItem("username", JSON.stringify(user.username));
+      localStorage.setItem("user", JSON.stringify(user));
       push("/home");
     } catch (error) {
       if (formUsername !== "") {
@@ -53,7 +53,8 @@ const Registration = () => {
   };
 
   const handleLogout = () => {
-    setUsername("");
+    setUser({})
+    localStorage.removeItem("user");
     setLoggedIn(false);
     toast.success(`You have been logged out`);
   };
@@ -73,7 +74,8 @@ const Registration = () => {
       const response = await axios.post(Api.createUser, formData);
       if (response.status == 200) {
         toast.success("User created successfully");
-        setUsername(formData.username);
+        setUser(response.data);
+        localStorage.setItem("user", JSON.stringify(response.data));
         setLoggedIn(true);
         push("/home");
       }
@@ -81,6 +83,7 @@ const Registration = () => {
       toast.error(error.response.data.message);
     }
   };
+  
   return (
     <div className={styles.container}>
       <div className={styles.header}>

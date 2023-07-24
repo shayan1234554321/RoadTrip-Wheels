@@ -4,26 +4,21 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 const Context = createContext();
 
-
 export const StateContext = ({ children }) => {
-  const [username, setUsername] = useState("a great name");
-  const [fullName, setFullName] = useState("a great name");
+  const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
 
-useEffect(() => {
-  if(localStorage.getItem("username")) {
-    setUsername(JSON.parse(localStorage.getItem("username")));
-    setLoggedIn(true);
-  }
-}, []);
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setUser(JSON.parse(localStorage.getItem("user")));
+    }
+  }, []);
 
   return (
     <Context.Provider
       value={{
-        username,
-        setUsername,
-        fullName,
-        setFullName,
+        user,
+        setUser,
         loggedIn,
         setLoggedIn,
       }}
