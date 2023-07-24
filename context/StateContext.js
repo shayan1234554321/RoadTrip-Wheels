@@ -10,7 +10,7 @@ import axios from "axios";
 export const StateContext = ({ children }) => {
   const [username, setUsername] = useState("a great name");
   const [fullName, setFullName] = useState("a great name");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(null);
   const [userId, setUserId] = useState(0);
   const [cars, setCars] = useState([]);
 
