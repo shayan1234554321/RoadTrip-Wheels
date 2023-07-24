@@ -12,6 +12,7 @@ export const StateContext = ({ children }) => {
   useEffect(() => {
     if (localStorage.getItem("user")) {
       setUser(JSON.parse(localStorage.getItem("user")));
+      setLoggedIn(true)
     }
   }, []);
 

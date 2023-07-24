@@ -9,26 +9,20 @@ import { useStateContext } from "@/context/StateContext";
 import calendar from "@/assets/images/calendar.png";
 import Image from "next/image";
 
-const CarItem = ({ name, city, image, cost, starting_date, end_date}) => {
-  const date1 = new Date(starting_date);
-  const date2 = new Date(end_date);
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const startDay = date1.getDate();
-  const startMonth = monthNames[date1.getMonth()];
-  const endDay = date2.getDate();
-  const endMonth = monthNames[date2.getMonth()];
-
+const CarItem = ({ car, city, cost, starting_date, end_date }) => {
   return (
     <div className={style.carItem}>
       <div className={style.left}>
         <h4>
-          Your Ride <span>{name}</span>
+          Your Ride <span>{car.name}</span>
         </h4>
         <h4>
-          Booking Date <span>{startDay} {startMonth}</span> <Image src = {calendar} alt = 'calendar' className={style.calendar} />
+          Booking Date <span>{starting_date}</span>{" "}
+          <Image src={calendar} alt="calendar" className={style.calendar} />
         </h4>
         <h4>
-          Returning Date <span>{endDay} {endMonth}</span> <Image src = {calendar} alt = 'calendar' className={style.calendar} />
+          Returning Date <span>{end_date}</span>{" "}
+          <Image src={calendar} alt="calendar" className={style.calendar} />
         </h4>
         <h4>
           City <span>{city}</span>
@@ -39,7 +33,7 @@ const CarItem = ({ name, city, image, cost, starting_date, end_date}) => {
           Total Charges:<span>${cost}</span>
         </h4>
         <div className={style.imageContainer}>
-          <img src={image} alt="car image" />
+          <img src={car.image} alt="car image" />
         </div>
       </div>
     </div>
@@ -48,14 +42,13 @@ const CarItem = ({ name, city, image, cost, starting_date, end_date}) => {
 
 const MyReservations = () => {
   const [reservations, setReservations] = useState([]);
-  const { cars } = useStateContext();
-  let car ={name: 'example', image: 'example'};
-  const userId = JSON.parse(localStorage.getItem("userId"));
+  const { user } = useStateContext();
 
   const getData = async () => {
     try {
-      const response = await axios.get(Api.getReservations(userId));
+      const response = await axios.get(Api.getReservations(user.id));
       const data = await response.data;
+      console.log(data.data);
       setReservations(await data.data);
     } catch (error) {
       console.log(error);
@@ -70,10 +63,9 @@ const MyReservations = () => {
     <div className={style.addRemoveContainer}>
       <h1>YOUR RESERVATIONS</h1>
       <div className={style.itemsContainer}>
-        {reservations?.map((item, i) => {
-          car = cars.find((car) => car.id === item.car_id);
-          return <CarItem key={item.name + i} {...item} image={car.image} name={car.name} />;
-        })}
+        {reservations?.map((item, i) => (
+          <CarItem key={item.name + i} {...item} />
+        ))}
         {reservations.length === 0 && <h2>You have no reservations</h2>}
       </div>
     </div>
@@ -81,13 +73,11 @@ const MyReservations = () => {
 };
 
 CarItem.propTypes = {
+  car: PropTypes.object.isRequired,
   city: PropTypes.string.isRequired,
-  cost: PropTypes.number.isRequired, 
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  cost: PropTypes.number.isRequired,
   starting_date: PropTypes.string.isRequired,
   end_date: PropTypes.string.isRequired,
 };
-
 
 export default MyReservations;

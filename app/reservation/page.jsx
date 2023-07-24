@@ -133,7 +133,6 @@ const Reservation = () => {
               type="date"
               id="dateInput"
               name="dateInput"
-              onFocus="blur()"
               value={form.returnDate}
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, returnDate: e.target.value }))
