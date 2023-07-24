@@ -14,8 +14,8 @@ import car from '@/assets/images/car-background.png'
 
 const Registration = () => {
   const [login, setLogin] = useState(true);
-  const [formUsername, setFormUsername] = useState(true);
-  const [formFullname, setFormFullname] = useState(true);
+  const [formUsername, setFormUsername] = useState("");
+  const [formFullname, setFormFullname] = useState("");
   const { username, setUsername, loggedIn, setLoggedIn, setUserId } = useStateContext();
   const { push } = useRouter();
 
@@ -117,6 +117,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
+              value = {formUsername}
               required
             />
             <input
@@ -144,6 +145,7 @@ const Registration = () => {
               onChange={(e) => setFormFullname(e.target.value)}
               type="text"
               placeholder="Full name"
+              value= {formFullname}
               required
             />
             <input
@@ -151,6 +153,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
+              value= {formUsername}
               required
             />
             <input
