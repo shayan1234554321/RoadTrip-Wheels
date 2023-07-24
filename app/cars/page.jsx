@@ -10,7 +10,7 @@ import style from './page.module.css';
 const ItemContainer = ({ image, name, cost_per_day }) => {
   return (
     <div className={style.itemContainer}>
-      <img src={image} alt='car' className={style.itemImage} />
+      <img src={image} alt='car' />
       <div>
         <h3>{name}</h3>
         <p>- €350 deposit upon any car PuchaSet</p>

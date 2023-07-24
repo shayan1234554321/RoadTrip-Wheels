@@ -5,10 +5,6 @@
   justify-content: space-evenly;
 }
 
-.itemImage {
-  width: 55%;
-}
-
 .car_table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -36,3 +32,4 @@
   background-color: #04aa6d;
   color: white;
 }
+
