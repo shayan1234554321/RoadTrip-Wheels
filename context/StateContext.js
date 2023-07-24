@@ -3,14 +3,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 const Context = createContext();
-import { Api } from "@/utilities/common";
-import axios from "axios";
 
 export const StateContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(0);
-  const [cars, setCars] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -26,9 +23,7 @@ export const StateContext = ({ children }) => {
         loggedIn,
         setLoggedIn,
         userId,
-        setUserId,
-        cars,
-        setCars,
+        setUserId
       }}
     >
       {children}
