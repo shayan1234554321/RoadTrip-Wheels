@@ -1,3 +1,11 @@
-.id {
-  color: red;
+.itemContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
 }
+
+.itemImage {
+  width: 65%;
+}
+
