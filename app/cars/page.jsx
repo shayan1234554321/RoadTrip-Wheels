@@ -46,7 +46,7 @@ export default function page() {
   const id = searchParams.get('id'); // To execute the fetch operation
 
   const response = {
-    id: '1',
+    id: id,
     image: 'https://i.ibb.co/5KWVYn6/range.png',
     name: 'Range Rover',
     description: 'A great choice for traveling with your besties',
