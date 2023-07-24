@@ -14,9 +14,9 @@ import car from '@/assets/images/car-background.png'
 
 const Registration = () => {
   const [login, setLogin] = useState(true);
-  const [formUsername, setFormUsername] = useState(true);
-  const [formFullname, setFormFullname] = useState(true);
-  const { username, setUsername, loggedIn, setLoggedIn } = useStateContext();
+  const [formUsername, setFormUsername] = useState("");
+  const [formFullname, setFormFullname] = useState("");
+  const { username, setUsername, loggedIn, setLoggedIn, setUserId } = useStateContext();
   const { push } = useRouter();
 
   const handleToggle = () => {
@@ -33,9 +33,11 @@ const Registration = () => {
       const data = await response.data;
       const user = await data.data;
       setUsername(user.username);
+      setUserId(user.id);
       setLoggedIn(true);
       toast.success(`Welcome ${user.username}`);
       localStorage.setItem("username", JSON.stringify(user.username));
+      localStorage.setItem("userId", JSON.stringify(user.id));
       push("/home");
     } catch (error) {
       if (formUsername !== "") {
@@ -50,6 +52,8 @@ const Registration = () => {
     setUsername("");
     setLoggedIn(false);
     toast.success(`You have been logged out`);
+    localStorage.removeItem("username");
+    localStorage.removeItem("userId");
   };
 
   const handleSignupSubmit = async (e) => {
@@ -107,6 +111,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
+              value = {formUsername}
               required
             />
             <input
@@ -134,6 +139,7 @@ const Registration = () => {
               onChange={(e) => setFormFullname(e.target.value)}
               type="text"
               placeholder="Full name"
+              value= {formFullname}
               required
             />
             <input
@@ -141,6 +147,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
+              value= {formUsername}
               required
             />
             <input
