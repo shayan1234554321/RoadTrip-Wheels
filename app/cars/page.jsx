@@ -14,7 +14,7 @@ const ItemContainer = ({ image, name, cost_per_day }) => {
       <div>
         <h3>{name}</h3>
         <p>- €350 deposit upon any car PuchaSet</p>
-        <table>
+        <table className={style.car_table}>
           <tr>
             <td>Finance fee</td>
             <td>€{cost_per_day}</td>
