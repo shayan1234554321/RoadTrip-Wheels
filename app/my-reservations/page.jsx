@@ -8,7 +8,7 @@ import { colors, Api } from "@/utilities/common";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-const CarItem = ({ id, name, description, image, cost_per_day, setData }) => {
+const CarItem = ({ name, description, image, cost_per_day }) => {
 
   const deleteCar = async () => {
     
@@ -40,8 +40,6 @@ const CarItem = ({ id, name, description, image, cost_per_day, setData }) => {
 };
 
 const MyReservations = () => {
-
-  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const getData = async () => {
@@ -71,12 +69,10 @@ const MyReservations = () => {
 };
 
 CarItem.propTypes = {
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired, 
   image: PropTypes.string.isRequired,
   cost_per_day: PropTypes.number.isRequired,
-  setData: PropTypes.func.isRequired
 };
 
 
