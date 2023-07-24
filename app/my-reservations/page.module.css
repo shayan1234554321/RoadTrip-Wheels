@@ -69,6 +69,23 @@
   pointer-events: none;
 }
 
+.calendar {
+  width: 24px;
+  height: 24px;
+  padding-left: 10px;
+}
+
+.cost {
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+}
+
+.carItem .left h4 {
+  display: flex;
+  align-items: center;
+}
+
 .carItem .right img {
   width: 250px;
 }
@@ -82,6 +99,8 @@
   .carItem {
     flex-direction: column;
     margin-bottom: 80px;
+    gap: 20px;
+    min-height: 232px;
   }
 
   .carItem .right {
@@ -90,6 +109,6 @@
 
   .imageContainer {
     width: 100%;
-    bottom: -180px;
+    bottom: -126px;
   }
 }
