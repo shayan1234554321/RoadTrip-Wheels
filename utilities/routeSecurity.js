@@ -20,8 +20,6 @@ const RouteSecurity = ({ children }) => {
       toast.success("You are already logged In");
       push("/home");
     }
-    console.log(pathname);
-    console.log(loggedIn);
   }, [loggedIn, pathname]);
 
   return <div className="mainBodyDiv">{children}</div>;
