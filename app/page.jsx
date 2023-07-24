@@ -14,9 +14,9 @@ import car from '@/assets/images/car-background.png'
 
 const Registration = () => {
   const [login, setLogin] = useState(true);
-  const [formUsername, setFormUsername] = useState(true);
-  const [formFullname, setFormFullname] = useState(true);
   const { user , setUser , loggedIn, setLoggedIn } = useStateContext();
+  const [formUsername, setFormUsername] = useState("");
+  const [formFullname, setFormFullname] = useState("");
   const { push } = useRouter();
 
   useEffect(() => {
@@ -57,6 +57,8 @@ const Registration = () => {
     localStorage.removeItem("user");
     setLoggedIn(false);
     toast.success(`You have been logged out`);
+    localStorage.removeItem("username");
+    localStorage.removeItem("userId");
   };
 
   const handleSignupSubmit = async (e) => {
@@ -116,6 +118,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
+              value = {formUsername}
               required
             />
             <input
@@ -143,6 +146,7 @@ const Registration = () => {
               onChange={(e) => setFormFullname(e.target.value)}
               type="text"
               placeholder="Full name"
+              value= {formFullname}
               required
             />
             <input
@@ -150,6 +154,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
+              value= {formUsername}
               required
             />
             <input
