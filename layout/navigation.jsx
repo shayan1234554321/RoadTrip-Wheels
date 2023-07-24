@@ -56,6 +56,7 @@ const Navigation = () => {
     setFullName(null);
     setUsername(null);
     localStorage.removeItem("username");
+    localStorage.removeItem("userId");
     setLoggedIn(false);
     router.push("/");
   };
