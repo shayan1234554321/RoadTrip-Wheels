@@ -1,35 +1,43 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import style from './page.module.css';
 
 const ItemContainer = ({ image, name, cost_per_day }) => {
+  const [value, setValue] = useState(5);
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    const intValue = parseInt(inputValue.replace(/\D/g, ''), 10);
+    setValue(intValue);
+  };
+
   return (
     <div className={style.itemContainer}>
       <img src={image} alt='car' />
       <div>
         <h3>{name}</h3>
-        <p>- €350 deposit upon any car PuchaSet</p>
         <table className={style.car_table}>
           <tr>
-            <td>Finance fee</td>
-            <td>€{cost_per_day}</td>
+            <td>Cost</td>
+            <td>${cost_per_day}</td>
           </tr>
           <tr>
-            <td>Option to purchase fee</td>
-            <td>€{cost_per_day * 2}</td>
+            <td>Days</td>
+            <input
+              type='text'
+              value={value}
+              onChange={handleInputChange}
+              placeholder='Enter an integer'
+            />
           </tr>
           <tr>
-            <td>Total ammount payable</td>
-            <td>€{cost_per_day * 10}</td>
-          </tr>
-          <tr>
-            <td>Duration</td>
-            <td>10 days</td>
+            <td>Total</td>
+            <td>${cost_per_day * value}</td>
           </tr>
         </table>
         <p>

@@ -15,10 +15,11 @@
   padding: 8px;
 }
 
-.car_table tr:nth-child(even) {
+.car_table tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
 .car_table tr:hover {
   background-color: #ddd;
 }
+
