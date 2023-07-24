@@ -59,7 +59,7 @@
 .form .datePickerBlocker {
   position: absolute;
   z-index: 5;
-  width: calc(100% - 12px );
+  width: calc(100% - 12px);
   height: 100%;
   background-color: rgba(44, 82, 116, 0);
   top: 0;
@@ -81,7 +81,6 @@
 }
 
 @media screen and (max-width: 769px) {
-
   .title {
     font-size: 16px;
     letter-spacing: 5px;
@@ -95,19 +94,17 @@
     font-size: 14px;
     padding: 10px;
   }
-  
-  .form input ,
+
+  .form input,
   .form select {
     font-size: 14px;
   }
-  
+
   .flexRow {
     justify-content: space-between;
   }
-  
+
   .form h4 {
     font-weight: 300;
-
   }
-
 }

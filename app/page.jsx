@@ -129,7 +129,7 @@ const Registration = () => {
         {login && loggedIn && (
           <div className={styles.form}>
             <p className={styles.logoutText}>
-              You are already logged in as: {username}
+              You are already logged in as: {user.username}
             </p>
             <button className={styles.submit} onClick={handleLogout}>
               Log out
@@ -163,7 +163,7 @@ const Registration = () => {
         {!login && loggedIn && (
           <div className={styles.form}>
             <p className={styles.logoutText}>
-              You are already logged in as: {username}, you need to logout to
+              You are already logged in as: {user.username}, you need to logout to
               register a new user
             </p>
             <button className={styles.submit} onClick={handleLogout}>

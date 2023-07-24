@@ -12,7 +12,6 @@ import { useRouter } from "next/navigation";
 const Reservation = () => {
   const [totalCharges, setTotalCharges] = useState(0);
   const [data, setData] = useState([]);
-  const [image, setImage] = useState("");
   const { user } = useStateContext();
   const formattedDate = FormattedDate();
   const { push } = useRouter();
@@ -121,7 +120,7 @@ const Reservation = () => {
               name="dateInput"
               min={formattedDate}
               onKeyDown={() => {}}
-              class={style.dateInput}
+              className={style.dateInput}
             />
           </div>
         </div>
@@ -130,7 +129,7 @@ const Reservation = () => {
           <div style={{ position: "relative" }}>
             <div className={style.datePickerBlocker}></div>
             <input
-              class={style.dateInput}
+              className={style.dateInput}
               type="date"
               id="dateInput"
               name="dateInput"
