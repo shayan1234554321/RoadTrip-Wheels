@@ -6,6 +6,7 @@ import Navigation from "@/layout/navigation";
 import { Inter } from "next/font/google";
 import PropTypes from "prop-types";
 import { Toaster } from "react-hot-toast";
+import RouteSecurity from "@/utilities/routeSecurity";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,11 +19,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <StateContext>
-          <div className="mainBodyDiv">
+          <RouteSecurity>
             <Navigation />
             {children}
             <Toaster />
-          </div>
+          </RouteSecurity>
         </StateContext>
       </body>
     </html>

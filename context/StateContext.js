@@ -8,7 +8,7 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
   const [username, setUsername] = useState("a great name");
   const [fullName, setFullName] = useState("a great name");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(null);
 
 useEffect(() => {
   if(localStorage.getItem("username")) {
