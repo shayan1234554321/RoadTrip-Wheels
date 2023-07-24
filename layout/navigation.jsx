@@ -65,7 +65,7 @@ const Navigation = () => {
       {usePathname() !== "/" && (
         <>
           <div className={styles.logoutButton}>
-            <RoundedButton color={colors.green} onClick={handleLogout}>
+            <RoundedButton color={colors.green} onClick={handleLogout} inverted={usePathname() === "/reservation"} >
               LOGOUT
             </RoundedButton>
           </div>
