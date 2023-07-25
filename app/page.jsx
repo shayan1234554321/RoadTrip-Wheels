@@ -11,6 +11,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Api } from "@/utilities/common";
 import car from "@/assets/images/car-background.png";
+import HashLoader from "react-spinners/HashLoader";
 
 const Registration = () => {
   const [login, setLogin] = useState(true);
@@ -18,12 +19,14 @@ const Registration = () => {
   const [formUsername, setFormUsername] = useState("");
   const [formFullname, setFormFullname] = useState("");
   const { push } = useRouter();
+  const [ loading , setLoading ] = useState(false)
 
   const handleToggle = () => {
     setLogin(!login);
   };
 
   const handleSigninSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     if (formUsername === "") {
       toast.error("Please enter a username");
@@ -43,6 +46,8 @@ const Registration = () => {
       } else {
         toast.error("Something went wrong");
       }
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -54,6 +59,7 @@ const Registration = () => {
   };
 
   const handleSignupSubmit = async (e) => {
+    setLoading(true)
     let formData;
     e.preventDefault();
     if (formUsername === "" || formFullname === "") {
@@ -75,13 +81,15 @@ const Registration = () => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+    } finally {
+      setLoading(false)
     }
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Image src={logo} alt="logo" className={styles.logo} />
+        <Image src={logo.src} alt="logo" className={styles.logo} />
         {login && (
           <RoundedButton
             onClick={handleToggle}
@@ -117,7 +125,8 @@ const Registration = () => {
               className={styles.submit}
               type="submit"
               onClick={handleSigninSubmit}
-              value="SIGNIN"
+              value={loading ? "LOADING" : "SIGNIN"}
+              style={{pointerEvents: loading? "none":"all" }}
             />
           </form>
         )}
@@ -126,7 +135,8 @@ const Registration = () => {
             <p className={styles.logoutText}>
               You are already logged in as: {user.username}
             </p>
-            <button className={styles.submit} onClick={handleLogout}>
+            <button className={styles.submit} onClick={handleLogout}  >
+
               Log out
             </button>
           </div>
@@ -153,7 +163,8 @@ const Registration = () => {
               className={styles.submit}
               type="submit"
               onClick={handleSignupSubmit}
-              value="SIGNUP"
+              value={loading ? "LOADING" : "SIGNUP"}
+              style={{pointerEvents: loading? "none":"all" }}
             />
           </form>
         )}
