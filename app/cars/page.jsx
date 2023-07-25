@@ -3,11 +3,13 @@
 import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { RoundedButton } from '@/components/buttons';
+import { colors } from '@/utilities/common';
 import PropTypes from 'prop-types';
 
 import style from './page.module.css';
 
-const ItemContainer = ({ image, name, cost_per_day }) => {
+const ItemContainer = ({ id, image, name, cost_per_day }) => {
   const [value, setValue] = useState(5);
 
   const handleInputChange = (e) => {
@@ -43,7 +45,9 @@ const ItemContainer = ({ image, name, cost_per_day }) => {
           </tr>
         </table>
         <h2 className={style.details_separator}>..................</h2>
-        <Link href='/home'>Discover more models</Link>
+        <Link href={`/reservation?id=${id}`}>
+          <RoundedButton color={colors.green}>RESERVE</RoundedButton>
+        </Link>
       </div>
     </div>
   );
