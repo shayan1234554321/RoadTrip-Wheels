@@ -11,6 +11,7 @@
   grid-column: 1;
   grid-row: 1;
   justify-self: center;
+  width: 95%;
 }
 
 .details_table_container {
@@ -90,4 +91,9 @@
     width: 100%;
     align-items: center;
   }
+
+  .details_image {
+    width: auto;
+  }
 }
+
