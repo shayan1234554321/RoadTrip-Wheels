@@ -5,6 +5,7 @@ import arrow from '@/assets/images/arrow.png';
 import PropTypes from 'prop-types';
 import { Api } from '@/utilities/common';
 import axios from 'axios';
+import Link from 'next/link';
 
 const ItemContainer = ({ id, image, name, description }) => {
   return (
