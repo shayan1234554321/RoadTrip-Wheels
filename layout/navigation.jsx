@@ -13,7 +13,7 @@ import { RoundedButton } from "@/components/buttons";
 import { useRouter, usePathname } from "next/navigation";
 
 const Navigation = () => {
-  const { setFullName, setUsername, setLoggedIn } = useStateContext();
+  const { setUser, setLoggedIn } = useStateContext();
   const [menuShow, setMenuShow] = useState(false);
   const router = useRouter();
 
@@ -53,10 +53,8 @@ const Navigation = () => {
   ];
 
   const handleLogout = () => {
-    setFullName(null);
-    setUsername(null);
-    localStorage.removeItem("username");
-    localStorage.removeItem("userId");
+    setUser({})
+    localStorage.removeItem("user");
     setLoggedIn(false);
     router.push("/");
   };
@@ -66,7 +64,7 @@ const Navigation = () => {
       {usePathname() !== "/" && (
         <>
           <div className={styles.logoutButton}>
-            <RoundedButton color={colors.green} onClick={handleLogout}>
+            <RoundedButton color={colors.green} onClick={handleLogout} inverted={usePathname() === "/reservation"} >
               LOGOUT
             </RoundedButton>
           </div>
