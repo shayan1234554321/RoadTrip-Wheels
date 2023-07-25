@@ -72,10 +72,8 @@ export default function page() {
       try {
         const response = await axios.get(Api.getCar(id));
         setData(response.data);
-        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setIsLoading(false);
       }
     };
 
