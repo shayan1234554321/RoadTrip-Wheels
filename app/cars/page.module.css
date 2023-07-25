@@ -35,3 +35,16 @@
   min-width: 300px;
 }
 
+.table_right_item {
+  text-align: right;
+}
+
+.table_right_item input {
+  background-color: #ddd;
+  border: none;
+  border-radius: 3px;
+  width: 15px;
+  padding: 7px;
+  text-align: center;
+}
+

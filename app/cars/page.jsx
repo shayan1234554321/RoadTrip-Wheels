@@ -24,11 +24,11 @@ const ItemContainer = ({ image, name, cost_per_day }) => {
         <table className={style.car_table}>
           <tr>
             <td>Cost</td>
-            <td>${cost_per_day}</td>
+            <td className={style.table_right_item}>${cost_per_day}</td>
           </tr>
           <tr>
             <td>Days</td>
-            <td>
+            <td className={style.table_right_item}>
               <input
                 type='text'
                 value={value}
@@ -39,7 +39,7 @@ const ItemContainer = ({ image, name, cost_per_day }) => {
           </tr>
           <tr>
             <td>Total</td>
-            <td>${cost_per_day * value}</td>
+            <td className={style.table_right_item}>${cost_per_day * value}</td>
           </tr>
         </table>
         <h2 className={style.details_separator}>..................</h2>
