@@ -64,7 +64,7 @@ const MyReservations = () => {
       <h1>YOUR RESERVATIONS</h1>
       <div className={style.itemsContainer}>
         {reservations?.map((item, i) => (
-          <CarItem key={item.name + i} {...item} />
+          <CarItem key={item.id + i} {...item} />
         ))}
         {reservations.length === 0 && <h2>You have no reservations</h2>}
       </div>

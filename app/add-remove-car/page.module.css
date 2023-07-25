@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.addRemoveContainer h2 {
+  opacity: 0.5;
+}
+
 .addRemoveContainer h1 {
   opacity: 0.5;
   margin: 4vh 0;
