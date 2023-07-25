@@ -1,18 +1,21 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import style from "./page.module.css";
-import arrow from "@/assets/images/arrow.png";
-import PropTypes from "prop-types";
-import { Api } from "@/utilities/common";
-import axios from "axios";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import style from './page.module.css';
+import arrow from '@/assets/images/arrow.png';
+import PropTypes from 'prop-types';
+import { Api } from '@/utilities/common';
+import axios from 'axios';
+import Link from 'next/link';
 
-const ItemContainer = ({ image, name, description }) => {
+const ItemContainer = ({ id, image, name, description }) => {
   return (
     <div className={style.itemContainer}>
       <div className={style.inside}>
         <div>
           <div className={style.bgCircle}></div>
-          <img src={image} alt="item" />
+          <Link href={`/cars?id=${id}`}>
+            <img src={image} alt='item' />
+          </Link>
         </div>
         <h3>{name}</h3>
         <h2>.........</h2>
@@ -35,7 +38,7 @@ const Home = () => {
 
     carousal?.current?.scrollTo({
       left: scroll,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -45,7 +48,7 @@ const Home = () => {
       : carousal?.current?.scrollLeft - carousal?.current?.offsetWidth / 3;
     carousal?.current?.scrollTo({
       left: scroll,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -55,18 +58,18 @@ const Home = () => {
       setIsMobile(window.innerWidth < 769);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     handleResize();
 
     const handleScroll = () => {
       setScrollLeft(carousal.current.scrollLeft);
     };
-    carousal?.current?.addEventListener("scroll", handleScroll);
+    carousal?.current?.addEventListener('scroll', handleScroll);
 
     return () => {
-      carousal?.current?.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      carousal?.current?.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -89,10 +92,10 @@ const Home = () => {
             onClick={goLeft}
             style={{
               backgroundColor:
-                scrollLeft === 0 ? "rgba(0, 0, 0, 0.2)" : "var(--green)",
+                scrollLeft === 0 ? 'rgba(0, 0, 0, 0.2)' : 'var(--green)',
             }}
           >
-            <img src={arrow.src} alt="left icon" />
+            <img src={arrow.src} alt='left icon' />
           </div>
         </div>
 
@@ -109,11 +112,11 @@ const Home = () => {
               backgroundColor:
                 scrollLeft + carousal?.current?.offsetWidth >
                 carousal?.current?.scrollWidth
-                  ? "rgba(0, 0, 0, 0.2)"
-                  : "var(--green)",
+                  ? 'rgba(0, 0, 0, 0.2)'
+                  : 'var(--green)',
             }}
           >
-            <img src={arrow.src} alt="right icon" />
+            <img src={arrow.src} alt='right icon' />
           </div>
         </div>
       </div>
@@ -122,9 +125,11 @@ const Home = () => {
 };
 
 ItemContainer.propTypes = {
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
 
 export default Home;
+
