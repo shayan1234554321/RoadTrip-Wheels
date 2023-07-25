@@ -29,10 +29,11 @@
 
 ### The Roadtrip wheels front end  is the application that uses the data of the Road trip wheels API to have the web application functional, there, you can register, add and delete cars,  make a reservation on a car an check your reservations.
 
+Heres the Backend <a href="https://github.com/luis-pomare/rails-car-booking-rentals-backend" >Link</a>
+
 ## 🛠 Built With <a name="built-with"></a>
 
 - Next js
-
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -47,6 +48,9 @@
 <summary>Client</summary>
   <ul>
     <li><a href="https://nextjs.org/">Next JS</a></li>
+    <li><a href="#">Axios</a></li>
+    <li><a href="#">react-hot-toast</a></li>
+    <li><a href="#">react-spinners</a></li>
   </ul>
 </details>
 
@@ -56,7 +60,6 @@
 
 - **[Global state management]**
 - **[Responsive]**
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -98,7 +101,7 @@ Clone this repository to your desired folder:
 Run the following codes in your project folder in your IDE:
 
 ```
-npm install
+yarn install
 ```
 
 
@@ -108,7 +111,7 @@ To run the project, execute the following command:
 
 
 ```
-npm run dev
+yarn run dev
 ```
 
 ### Back end
