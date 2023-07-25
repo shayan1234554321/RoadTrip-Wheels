@@ -1,12 +1,14 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { RoundedButton } from '@/components/buttons';
 import { colors } from '@/utilities/common';
 import PropTypes from 'prop-types';
 import arrow from '@/assets/images/arrow.png';
+import { Api } from '@/utilities/common';
+import axios from 'axios';
 
 import style from './page.module.css';
 
@@ -61,17 +63,24 @@ const ItemContainer = ({ id, image, name, cost_per_day }) => {
 
 export default function page() {
   const searchParams = useSearchParams();
-  const id = searchParams.get('id'); // To execute the fetch operation
+  const id = searchParams.get('id');
 
-  const response = {
-    id: id,
-    image: 'https://i.ibb.co/5KWVYn6/range.png',
-    name: 'Range Rover',
-    description: 'A great choice for traveling with your besties',
-    cost_per_day: '27',
-  };
+  const [data, setData] = useState({});
 
-  return <ItemContainer {...response} />;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(Api.getCar(id));
+        setData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return data.data ? <ItemContainer {...data.data} /> : <p>No cars here</p>;
 }
 
 ItemContainer.propTypes = {
