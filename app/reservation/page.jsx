@@ -7,7 +7,7 @@ import axios from "axios";
 import { useStateContext } from "@/context/StateContext";
 import { FormattedDate, getNextDay } from "@/utilities/formateDate";
 import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Reservation = () => {
   const [totalCharges, setTotalCharges] = useState(0);
@@ -16,6 +16,9 @@ const Reservation = () => {
   const { user } = useStateContext();
   const formattedDate = FormattedDate();
   const { push } = useRouter();
+
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
 
   const [form, setForm] = useState({
     car_id: "",
@@ -54,7 +57,11 @@ const Reservation = () => {
     try {
       const response = await axios.get(Api.getCars);
       setData(response.data.data);
-      setForm((prev) => ({ ...prev, car_id: response.data.data[0].id }));
+      if(id){
+        setForm((prev) => ({ ...prev, car_id: id }));
+      }else{
+        setForm((prev) => ({ ...prev, car_id: response.data.data[0].id }));
+      }
     } catch (error) {
       console.log(error);
     }
@@ -104,6 +111,7 @@ const Reservation = () => {
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, car_id: e.target.value }))
               }
+              value={form?.car_id}
             >
               {data ? (
                 data.map((car) => (
