@@ -1,16 +1,15 @@
 .details_itemContainer {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 70% 30%;
-  justify-items: center;
+  grid-template-rows: 80% 20%;
   width: 100%;
   align-items: center;
-  justify-content: space-evenly;
 }
 
 .details_image {
   grid-column: 1;
   grid-row: 1;
+  justify-self: center;
 }
 
 .details_table_container {
@@ -21,11 +20,14 @@
   row-gap: 25px;
   grid-column: 2;
   grid-row: 1;
+  justify-self: center;
 }
 
 .details_button_container {
   grid-column: 1 / span 2;
   grid-row: 2;
+  display: flex;
+  align-self: flex-start;
 }
 
 .car_table {
@@ -62,5 +64,21 @@
   width: 15px;
   padding: 7px;
   text-align: center;
+}
+
+.details_button_link {
+  display: flex;
+  background-color: #97bf0f;
+  width: 80px;
+  height: 60px;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 25px;
+  border-radius: 0 50px 50px 0;
+}
+
+.details_button_link img {
+  width: 10px;
+  height: 15px;
 }
 

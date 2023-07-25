@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { RoundedButton } from '@/components/buttons';
 import { colors } from '@/utilities/common';
 import PropTypes from 'prop-types';
+import arrow from '@/assets/images/arrow.png';
 
 import style from './page.module.css';
 
@@ -49,7 +50,11 @@ const ItemContainer = ({ id, image, name, cost_per_day }) => {
           <RoundedButton color={colors.green}>RESERVE</RoundedButton>
         </Link>
       </div>
-      <div className={style.details_button_container}></div>
+      <div className={style.details_button_container}>
+        <Link href={`/home`} className={style.details_button_link}>
+          <img src={arrow.src} alt='left icon' height='5px' />
+        </Link>
+      </div>
     </div>
   );
 };
