@@ -19,8 +19,8 @@ const ItemContainer = ({ id, image, name, cost_per_day }) => {
   };
 
   return (
-    <div className={style.itemContainer}>
-      <img src={image} alt='car' />
+    <div className={style.details_itemContainer}>
+      <img src={image} alt='car' className={style.details_image} />
       <div className={style.details_table_container}>
         <h3>{name}</h3>
         <table className={style.car_table}>
@@ -49,6 +49,7 @@ const ItemContainer = ({ id, image, name, cost_per_day }) => {
           <RoundedButton color={colors.green}>RESERVE</RoundedButton>
         </Link>
       </div>
+      <div className={style.details_button_container}></div>
     </div>
   );
 };
