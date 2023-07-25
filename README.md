@@ -25,40 +25,28 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [CurrencyExplorer] <a name="about-project"></a>
+# 📖 [RoadTrip wheels front-end] <a name="about-project"></a>
 
-### CurrencyExplorer is a comprehensive online platform that provides detailed and up-to-date information on every currency used in countries around the world. Our website offers an easy-to-use interface that allows users to search for any currency they want, including exchange rates.
+### The Roadtrip wheels front end  is the application that uses the data of the Road trip wheels API to have the web application functional, there, you can register, add and delete cars,  make a reservation on a car an check your reservations.
 
 ## 🛠 Built With <a name="built-with"></a>
 
-- HTML
-- CSS
-- JavaScript
-- NPM
-- React
-- React router
-- Redux
+- Next js
+
 
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="">React</a></li>
-  </ul>
-</details>
-
-<details>
   <summary>Server</summary>
   <ul>
-    <li><a href="">External API</a></li>
+    <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
   </ul>
 </details>
 
 <details>
-<summary>Database</summary>
+<summary>Client</summary>
   <ul>
-    <li><a href="">External API</a></li>
+    <li><a href="https://nextjs.org/">Next JS</a></li>
   </ul>
 </details>
 
@@ -66,9 +54,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Display Currency rates]**
-- **[Exchange currencies]**
-- **[Search for specific currencies and exchange them with desired currency]**
+- **[Global state management]**
+- **[Responsive]**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -76,11 +64,8 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-<a href="">Live</a>
+<a href="">Live demo</a>
 
-## 🚀 Detailed Video Link <a name="live-demo"></a>
-
-<a href="">Watch Loom Video</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,10 +78,7 @@
 In order to run this project you need:
 
 - [ ] A PC running any operating system like Windows, Linux, or MacOS
-- [ ] An Internet connection
-- [ ] Git installed
-- [ ] Node.js
-- [ ] Knowledge of some basic Git commands
+- [ ] Node js
 
 ### Setup
 
@@ -105,63 +87,34 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-```git clone https://github.com/shayan1234554321/Currency-Explorer```
+```git clone https://github.com/shayan1234554321/RoadTrip-Wheels```
 
 - [ ] Open the file in your code editor
 
 ### Install
 
-- [ ] Setup JavaScript + CSS + HTML linter
+- [ ] Setup dependencies
 
 Run the following codes in your project folder in your IDE:
-
-```
-npm install --save-dev eslint@7.x eslint-config-airbnb@18.x eslint-plugin-import@2.x eslint-plugin-jsx-a11y@6.x eslint-plugin-react@7.x eslint-plugin-react-hooks@4.x @babel/eslint-parser@7.x @babel/core@7.x  @babel/plugin-syntax-jsx@7.x @babel/preset-env@7.x  @babel/preset-react@7.x
-```
-
-```
-npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
-```
-
-- [ ] project dependencies
 
 ```
 npm install
 ```
 
+
 ### Usage
 
 To run the project, execute the following command:
 
-Start the server
 
 ```
-npm start
+npm run dev
 ```
 
-### Run tests
+### Back end
 
-To run Stylelint , Jest and ESLint tests, run the following commands respectively:
+Go to [the Back end repo](https://github.com/luis-pomare/rails-car-booking-rentals-backend) and follow the readme instructions.
 
-```
-npm run: npx eslint "**/*.{js,jsx}"
-```
-
-```
-npx stylelint "**/*.{css,scss}"
-```
-
-```
-npx run test
-```
-
-### Deployment
-
-To deploy this project run
-
-```
-npm run deploy
-```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,14 +128,24 @@ npm run deploy
 - Twitter: [@twitterhandle](https://twitter.com/shayan123455432)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/shayan-khan20/)
 
+👤 Alejandro
+
+- GitHub: [Alejandro](https://github.com/Alejandro-Bernal-M)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/alejandro-bernal-marin)
+
+👤 Luis
+
+- GitHub: [@Luis Pomare](https://github.com/luis-pomare)
+- Twitter: [@LuisPomare1](https://twitter.com/LuisPomare1)
+- LinkedIn: [@Luis Pomare](https://www.linkedin.com/in/luis-pomare-388116225/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Auto detect country]**
-- [ ] **[Add Currency by date]**
+- [ ] **[Authentication]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,7 +153,7 @@ npm run deploy
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-You can contribute to this project by writing an issue <a href="https://github.com/shayan1234554321/Currency-Explorer/issues" >here</a>
+You can contribute to this project by writing an issue <a href="https://github.com/shayan1234554321/RoadTrip-Wheels/issues" >here</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -206,7 +169,8 @@ If you like this project please leave a ⭐️
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse and Youtube for their help
+I would like to thank Microverse for the knowledge.
+The original [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) was made by [Murat Korkmaz](https://www.behance.net/muratk) on behance
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
