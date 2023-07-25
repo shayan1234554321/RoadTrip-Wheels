@@ -19,7 +19,7 @@ const ItemContainer = ({ image, name, cost_per_day }) => {
   return (
     <div className={style.itemContainer}>
       <img src={image} alt='car' />
-      <div>
+      <div className={style.details_table_container}>
         <h3>{name}</h3>
         <table className={style.car_table}>
           <tr>
@@ -40,9 +40,7 @@ const ItemContainer = ({ image, name, cost_per_day }) => {
             <td>${cost_per_day * value}</td>
           </tr>
         </table>
-        <p>
-          <strong>5.9% APR</strong>Representative
-        </p>
+        <h2 className={style.details_separator}>.........</h2>
         <Link href='/home'>Discover more models</Link>
       </div>
     </div>

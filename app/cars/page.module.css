@@ -23,3 +23,8 @@
   background-color: #ddd;
 }
 
+.details_separator {
+  opacity: 0.1;
+  letter-spacing: 3px;
+}
+
