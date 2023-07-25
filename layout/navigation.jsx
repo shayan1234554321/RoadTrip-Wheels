@@ -11,6 +11,7 @@ import listWhite from "../assets/images/listWhite.png";
 import Link from "next/link";
 import { RoundedButton } from "@/components/buttons";
 import { useRouter, usePathname } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 const Navigation = () => {
   const { setUser, setLoggedIn } = useStateContext();
@@ -56,6 +57,7 @@ const Navigation = () => {
     setUser({})
     localStorage.removeItem("user");
     setLoggedIn(false);
+    toast.success("You are logged out")
     router.push("/");
   };
 

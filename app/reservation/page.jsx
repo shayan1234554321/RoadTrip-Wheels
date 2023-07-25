@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 
 const Reservation = () => {
   const [totalCharges, setTotalCharges] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const { user } = useStateContext();
   const formattedDate = FormattedDate();
@@ -25,21 +26,27 @@ const Reservation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     toast("Creating reservation");
-
-    const response = await axios.post(Api.createReservation(user.id), {
-      car_id: form.car_id,
-      starting_date: form.bookingDate,
-      end_date: form.returnDate,
-      city: form.city,
-      cost: totalCharges,
-    });
-
-    if (response.status === 200) {
-      toast.success("Reservation created successfully");
-      push("/my-reservations");
-    } else {
-      toast.error("There was an error");
+    try {
+      const response = await axios.post(Api.createReservation(user.id), {
+        car_id: form.car_id,
+        starting_date: form.bookingDate,
+        end_date: form.returnDate,
+        city: form.city,
+        cost: totalCharges,
+      });
+  
+      if (response.status === 200) {
+        toast.success("Reservation created successfully");
+        push("/my-reservations");
+      } else {
+        toast.error("There was an error");
+      }
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -89,77 +96,81 @@ const Reservation = () => {
         />
       </div>
       <h1 className={style.title}>HAVE A RESERVATION</h1>
-      <form onSubmit={handleSubmit} className={style.form}>
-        <div className={style.flexRow}>
-          <h4>Select your ride</h4>
-          <select
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, car_id: e.target.value }))
-            }
-          >
-            {data ? (
-              data.map((car) => (
-                <option key={car.id} value={car.id}>
-                  {car.name}
-                </option>
-              ))
-            ) : (
-              <option value={"No car available"}>No car available</option>
-            )}
-          </select>
-        </div>
-        <div className={style.flexRow}>
-          <h4>Booking Date</h4>
-          <div style={{ position: "relative" }}>
-            <div className={style.datePickerBlocker}></div>
-            <input
-              value={form.bookingDate}
-              onChange={handleBookingChange}
-              type="date"
-              id="dateInput"
-              name="dateInput"
-              min={formattedDate}
-              onKeyDown={() => {}}
-              className={style.dateInput}
-            />
-          </div>
-        </div>
-        <div className={style.flexRow}>
-          <h4>Return Date</h4>
-          <div style={{ position: "relative" }}>
-            <div className={style.datePickerBlocker}></div>
-            <input
-              className={style.dateInput}
-              type="date"
-              id="dateInput"
-              name="dateInput"
-              value={form.returnDate}
+      {data?.length > 0 ? (
+        <form onSubmit={handleSubmit} className={style.form}>
+          <div className={style.flexRow}>
+            <h4>Select your ride</h4>
+            <select
               onChange={(e) =>
-                setForm((prev) => ({ ...prev, returnDate: e.target.value }))
+                setForm((prev) => ({ ...prev, car_id: e.target.value }))
               }
-              min={getNextDay(form.bookingDate)}
-              onKeyDown={() => {}}
+            >
+              {data ? (
+                data.map((car) => (
+                  <option key={car.id} value={car.id}>
+                    {car.name}
+                  </option>
+                ))
+              ) : (
+                <option value={"No car available"}>No car available</option>
+              )}
+            </select>
+          </div>
+          <div className={style.flexRow}>
+            <h4>Booking Date</h4>
+            <div style={{ position: "relative" }}>
+              <div className={style.datePickerBlocker}></div>
+              <input
+                value={form.bookingDate}
+                onChange={handleBookingChange}
+                type="date"
+                id="dateInput"
+                name="dateInput"
+                min={formattedDate}
+                onKeyDown={() => {}}
+                className={style.dateInput}
+              />
+            </div>
+          </div>
+          <div className={style.flexRow}>
+            <h4>Return Date</h4>
+            <div style={{ position: "relative" }}>
+              <div className={style.datePickerBlocker}></div>
+              <input
+                className={style.dateInput}
+                type="date"
+                id="dateInput"
+                name="dateInput"
+                value={form.returnDate}
+                onChange={(e) =>
+                  setForm((prev) => ({ ...prev, returnDate: e.target.value }))
+                }
+                min={getNextDay(form.bookingDate)}
+                onKeyDown={() => {}}
+              />
+            </div>
+          </div>
+          <div className={style.flexRow}>
+            <h4>Enter desired city</h4>
+            <input
+              type="text"
+              placeholder="City"
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, city: e.target.value }))
+              }
+              required
             />
           </div>
-        </div>
-        <div className={style.flexRow}>
-          <h4>Enter desired city</h4>
-          <input
-            type="text"
-            placeholder="City"
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, city: e.target.value }))
-            }
-            required
-          />
-        </div>
-        <div className={style.flexRow}>
-          <h4>Total Charges : {totalCharges}$</h4>
-        </div>
-        <RoundedButton color={colors.green} inverted type="submit">
-          RESERVE NOW
-        </RoundedButton>
-      </form>
+          <div className={style.flexRow}>
+            <h4>Total Charges : {totalCharges}$</h4>
+          </div>
+          <RoundedButton loading={loading} color={colors.green} inverted type="submit">
+            RESERVE NOW
+          </RoundedButton>
+        </form>
+      ) : (
+        <h2>No Vehicle available</h2>
+      )}
     </div>
   );
 };

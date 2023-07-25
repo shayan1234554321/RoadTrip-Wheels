@@ -10,11 +10,11 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Api } from "@/utilities/common";
-import car from '@/assets/images/car-background.png'
+import car from "@/assets/images/car-background.png";
 
 const Registration = () => {
   const [login, setLogin] = useState(true);
-  const { user , setUser , loggedIn, setLoggedIn } = useStateContext();
+  const { user, setUser, loggedIn, setLoggedIn } = useStateContext();
   const [formUsername, setFormUsername] = useState("");
   const [formFullname, setFormFullname] = useState("");
   const { push } = useRouter();
@@ -47,12 +47,10 @@ const Registration = () => {
   };
 
   const handleLogout = () => {
-    setUser({})
+    setUser({});
     localStorage.removeItem("user");
     setLoggedIn(false);
     toast.success(`You have been logged out`);
-    localStorage.removeItem("username");
-    localStorage.removeItem("userId");
   };
 
   const handleSignupSubmit = async (e) => {
@@ -70,8 +68,8 @@ const Registration = () => {
       const response = await axios.post(Api.createUser, formData);
       if (response.status == 200) {
         toast.success("User created successfully");
-        setUser(response.data);
-        localStorage.setItem("user", JSON.stringify(response.data));
+        setUser(response.data.data);
+        localStorage.setItem("user", JSON.stringify(response.data.data));
         setLoggedIn(true);
         push("/home");
       }
@@ -79,7 +77,7 @@ const Registration = () => {
       toast.error(error.response.data.message);
     }
   };
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -112,7 +110,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
-              value = {formUsername}
+              value={formUsername}
               required
             />
             <input
@@ -140,7 +138,7 @@ const Registration = () => {
               onChange={(e) => setFormFullname(e.target.value)}
               type="text"
               placeholder="Full name"
-              value= {formFullname}
+              value={formFullname}
               required
             />
             <input
@@ -148,7 +146,7 @@ const Registration = () => {
               onChange={(e) => setFormUsername(e.target.value)}
               type="text"
               placeholder="username"
-              value= {formUsername}
+              value={formUsername}
               required
             />
             <input
@@ -162,8 +160,8 @@ const Registration = () => {
         {!login && loggedIn && (
           <div className={styles.form}>
             <p className={styles.logoutText}>
-              You are already logged in as: {user.username}, you need to logout to
-              register a new user
+              You are already logged in as: {user.username}, you need to logout
+              to register a new user
             </p>
             <button className={styles.submit} onClick={handleLogout}>
               Log out

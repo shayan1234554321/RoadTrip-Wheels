@@ -144,9 +144,13 @@ const AddRemoveCar = () => {
       </div>
       <h1>ALL CARS</h1>
       <div className={style.itemsContainer}>
-        {data?.map((item, i) => {
-          return <CarItem key={item.name + i} {...item} setData={setData} />;
-        })}
+        {data?.length > 0 ? (
+          data.map((item, i) => {
+            return <CarItem key={item.name + i} {...item} setData={setData} />;
+          })
+        ) : (
+          <h2>No Cars Added</h2>
+        )}
       </div>
       <Popup show={show} setShow={setShow}>
         <form className={style.form} onSubmit={handleSubmit}>
@@ -224,11 +228,10 @@ const AddRemoveCar = () => {
 CarItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired, 
+  description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   cost_per_day: PropTypes.number.isRequired,
-  setData: PropTypes.func.isRequired
+  setData: PropTypes.func.isRequired,
 };
-
 
 export default AddRemoveCar;
