@@ -1,0 +1,110 @@
+.reservation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 15vh);
+  background-color: var(--green);
+  color: white;
+  padding-top: 15vh;
+  justify-content: start;
+}
+
+.reservation > * {
+  z-index: 3;
+}
+
+.bgImage {
+  width: 50%;
+  max-width: 800px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.1;
+  bottom: 5vh;
+}
+
+.bgImage img {
+  width: 100%;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: start;
+}
+
+.title {
+  font-weight: 300;
+  letter-spacing: 8px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.form input,
+.form select {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  border: none;
+  margin-left: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid white;
+  outline: none;
+}
+
+.form .datePickerBlocker {
+  position: absolute;
+  z-index: 5;
+  width: calc(100% - 12px);
+  height: 100%;
+  background-color: rgba(44, 82, 116, 0);
+  top: 0;
+  left: 0;
+}
+
+.form {
+  text-align: center;
+}
+
+.form button {
+  margin-top: 40px;
+}
+
+.form option {
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 769px) {
+  .title {
+    font-size: 16px;
+    letter-spacing: 5px;
+  }
+
+  .bgImage {
+    width: 90%;
+  }
+
+  .form {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .form input,
+  .form select {
+    font-size: 14px;
+  }
+
+  .flexRow {
+    justify-content: space-between;
+  }
+
+  .form h4 {
+    font-weight: 300;
+  }
+}
