@@ -7,7 +7,6 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useStateContext } from "@/context/StateContext";
 import calendar from "@/assets/images/calendar.png";
-import Image from "next/image";
 
 const CarItem = ({ car, city, cost, starting_date, end_date }) => {
   return (
@@ -18,11 +17,11 @@ const CarItem = ({ car, city, cost, starting_date, end_date }) => {
         </h4>
         <h4>
           Booking Date <span>{starting_date}</span>{" "}
-          <Image src={calendar} alt="calendar" className={style.calendar} />
+          <img src={calendar.src} alt="calendar" className={style.calendar} />
         </h4>
         <h4>
           Returning Date <span>{end_date}</span>{" "}
-          <Image src={calendar} alt="calendar" className={style.calendar} />
+          <img src={calendar.src} alt="calendar" className={style.calendar} />
         </h4>
         <h4>
           City <span>{city}</span>

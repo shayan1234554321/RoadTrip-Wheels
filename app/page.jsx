@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./registration.module.css";
 import { RoundedButton } from "@/components/buttons";
 import { useState } from "react";
-import Image from "next/image";
 import logo from "@/assets/images/logo-white.png";
 import { useStateContext } from "@/context/StateContext";
 import { useRouter } from "next/navigation";
@@ -88,7 +87,7 @@ const Registration = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Image src={logo.src} alt="logo" className={styles.logo} />
+        <img src={logo.src} alt="logo" className={styles.logo} />
         {login && (
           <RoundedButton
             onClick={handleToggle}

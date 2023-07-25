@@ -14,6 +14,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { toast } from "react-hot-toast";
 
 const Navigation = () => {
+  const pathname = usePathname()
   const { setUser, setLoggedIn } = useStateContext();
   const [menuShow, setMenuShow] = useState(false);
   const router = useRouter();
@@ -21,7 +22,7 @@ const Navigation = () => {
   const navLinks = [
     {
       name: "VEHICLES",
-      selected: usePathname() === "/home",
+      selected: pathname.startsWith("/home"),
       linkName: "/home",
       handleClick: () => {
         setMenuShow(false);
@@ -29,7 +30,7 @@ const Navigation = () => {
     },
     {
       name: "RESERVATION",
-      selected: usePathname() === "/reservation",
+      selected: pathname.startsWith("/reservation"),
       linkName: "/reservation",
       handleClick: () => {
         setMenuShow(false);
@@ -37,7 +38,7 @@ const Navigation = () => {
     },
     {
       name: "MY RESERVATION",
-      selected: usePathname() === "/my-reservations",
+      selected: pathname.startsWith("/my-reservations"),
       linkName: "/my-reservations",
       handleClick: () => {
         setMenuShow(false);
@@ -45,7 +46,7 @@ const Navigation = () => {
     },
     {
       name: "ADD / REMOVE CAR",
-      selected: usePathname() === "/add-remove-car",
+      selected: pathname.startsWith("/add-remove-car"),
       linkName: "/add-remove-car",
       handleClick: () => {
         setMenuShow(false);
@@ -66,7 +67,7 @@ const Navigation = () => {
       {usePathname() !== "/" && (
         <>
           <div className={styles.logoutButton}>
-            <RoundedButton color={colors.green} onClick={handleLogout} inverted={usePathname() === "/reservation"} >
+            <RoundedButton color={colors.green} onClick={handleLogout} inverted={pathname.startsWith("/reservation")} >
               LOGOUT
             </RoundedButton>
           </div>
@@ -107,7 +108,7 @@ const Navigation = () => {
             >
               <img
                 src={
-                  usePathname() === "/reservation" ? listWhite.src : list.src
+                  pathname.startsWith("/reservation") ? listWhite.src : list.src
                 }
                 alt="mobile menu icon"
               />
