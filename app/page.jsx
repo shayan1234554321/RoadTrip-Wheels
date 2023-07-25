@@ -11,7 +11,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Api } from "@/utilities/common";
 import car from "@/assets/images/car-background.png";
-import HashLoader from "react-spinners/HashLoader";
 
 const Registration = () => {
   const [login, setLogin] = useState(true);
