@@ -28,19 +28,21 @@ const ItemContainer = ({ image, name, cost_per_day }) => {
           </tr>
           <tr>
             <td>Days</td>
-            <input
-              type='text'
-              value={value}
-              onChange={handleInputChange}
-              placeholder='Enter an integer'
-            />
+            <td>
+              <input
+                type='text'
+                value={value}
+                onChange={handleInputChange}
+                placeholder='Enter an integer'
+              />
+            </td>
           </tr>
           <tr>
             <td>Total</td>
             <td>${cost_per_day * value}</td>
           </tr>
         </table>
-        <h2 className={style.details_separator}>.........</h2>
+        <h2 className={style.details_separator}>..................</h2>
         <Link href='/home'>Discover more models</Link>
       </div>
     </div>
