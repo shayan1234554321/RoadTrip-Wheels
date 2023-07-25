@@ -1,4 +1,5 @@
 .details_itemContainer {
+  margin-top: 100px;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 80% 20%;
@@ -80,5 +81,14 @@
 .details_button_link img {
   width: 10px;
   height: 15px;
+}
+
+@media screen and (max-width: 769px) {
+  .details_itemContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 }
 
