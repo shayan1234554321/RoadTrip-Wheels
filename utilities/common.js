@@ -12,7 +12,7 @@ export const colors = {
 export const Api = {
     getCars : `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cars` , // method: get
     
-    getCar : (id) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/car/${id}`, // method: get
+    getCar : (id) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cars/${id}`, // method: get
     createCar : `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cars`, // method: post
     deleteCar : (id) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cars/${id}`, // method: delete
 
