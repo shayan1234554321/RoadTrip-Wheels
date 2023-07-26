@@ -61,7 +61,8 @@ const ItemContainer = ({ id, image, name, cost_per_day }) => {
   );
 };
 
-export default function page() {
+const page = () => {
+// export default function page() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
 
@@ -90,3 +91,4 @@ ItemContainer.propTypes = {
   cost_per_day: PropTypes.number.isRequired,
 };
 
+export default page

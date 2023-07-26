@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 import RouteSecurity from "@/utilities/routeSecurity";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -28,3 +28,5 @@ export default function RootLayout({ children }) {
 RootLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default RootLayout

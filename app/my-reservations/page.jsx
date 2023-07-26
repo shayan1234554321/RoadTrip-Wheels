@@ -47,7 +47,6 @@ const MyReservations = () => {
     try {
       const response = await axios.get(Api.getReservations(user.id));
       const data = await response.data;
-      console.log(data.data);
       setReservations(await data.data);
     } catch (error) {
       console.log(error);
