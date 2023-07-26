@@ -32,13 +32,14 @@ const Reservation = () => {
     setLoading(true)
     toast("Creating reservation");
     try {
-      const response = await axios.post(Api.createReservation(user.id), {
+      const response = await axios.post(Api.createReservation(user.username), {
         car_id: form.car_id,
         starting_date: form.bookingDate,
         end_date: form.returnDate,
         city: form.city,
         cost: totalCharges,
       });
+      console.log(response);
   
       if (response.status === 200) {
         toast.success("Reservation created successfully");

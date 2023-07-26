@@ -10,18 +10,18 @@ export const colors = {
 
 /* eslint-disable no-undef */
 export const Api = {
-    getCars : `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/cars` , // method: get
+    getCars : `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cars` , // method: get
     
-    getCar : (id) => `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/car/${id}`, // method: get
-    createCar : `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/cars`, // method: post
-    deleteCar : (id) => `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/cars/${id}`, // method: delete
+    getCar : (id) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/car/${id}`, // method: get
+    createCar : `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cars`, // method: post
+    deleteCar : (id) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cars/${id}`, // method: delete
 
-    getUser : (username) => `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/users/${username}`, // method: get
-    createUser : `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/users`, // method: post
+    getUser : (username) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/${username}`, // method: get
+    createUser : `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users`, // method: post
 
-    getReservations : (userId) => `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/users/${userId}/reservations`, // method: get
-    createReservation : (userId) => `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/users/${userId}/reservations`, // method: post
-    deleteReservation : (userId , id) => `${process.env.NEXT_PUBLIC_API_URL}/Api/v1/users/${userId}/reservations/${id}`, // method: delete
+    getReservations : (username) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/${username}/reservations`, // method: get
+    createReservation : (username) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/${username}/reservations`, // method: post
+    deleteReservation : (username , id) => `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/${username}/reservations/${id}`, // method: delete
     cloudinary: (cloudName) => `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
 }
 /* eslint-enable no-undef */
