@@ -1,0 +1,87 @@
+.nav {
+  pointer-events: all;
+  width: 220px;
+  height: 100vh;
+  border-right: 1px solid rgba(0, 0, 0, 0.196);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.navMenu li a div {
+  padding: 15px;
+}
+
+.nav > div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  width: 100%;
+}
+
+.navMenu {
+  width: calc(100% - 20px);
+  margin-left: 20px;
+  list-style: none;
+}
+
+.navMenu li {
+  width: 100%;
+}
+
+.navMenu li a {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.nav > div:nth-child(2) {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logoutButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.navMenu li:hover a div {
+  background-color: var(--green);
+  color: white;
+}
+
+.mobileMenu {
+  pointer-events: all;
+  display: none;
+  margin-top: 20px;
+  margin-left: 20px;
+  height: max-content;
+}
+
+.navMenu li.selected a div {
+  background-color: var(--green);
+  color: white;
+}
+
+.menuContainer {
+  transition: 0.3s ease-in-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 769px) {
+  .mobileMenu {
+    display: block;
+  }
+
+  .menuContainer {
+    position: fixed;
+    display: flex;
+    left: -220px;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "roadtrip-wheels",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "eslint-config-next": "13.4.9",
+    "next": "13.4.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-spinners": "^0.13.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-plugin-react": "^7.32.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0"
+  },
+  "engines": {
+    "node":">=16.8.0"
+  }
+}
