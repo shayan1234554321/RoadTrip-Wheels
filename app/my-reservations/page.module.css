@@ -54,7 +54,9 @@
 }
 
 .carItem .left button {
-  margin-top: 20px;
+  position: relative;
+  top: 42px;
+  z-index: 3;
 }
 
 .carItem .right {
@@ -114,6 +116,10 @@
 
   .imageContainer {
     width: 100%;
-    bottom: -126px;
+    bottom: -136px;
+  }
+
+  .carItem .left button {
+    top: 0;
   }
 }

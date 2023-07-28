@@ -1,14 +1,35 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import style from "./page.module.css";
 import { Api } from "@/utilities/common";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useStateContext } from "@/context/StateContext";
 import calendar from "@/assets/images/calendar.png";
+import { RoundedButton } from "@/components/buttons";
+import { colors } from "@/utilities/common";
+import { toast } from "react-hot-toast";
 
-const CarItem = ({ car, city, cost, starting_date, end_date }) => {
+
+const CarItem = ({ id, car, city, cost, starting_date, end_date }) => {
+  const { user, setReservations } = useStateContext();
+
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(Api.deleteReservation(user.username, id));
+      if (response.status === 200) {
+        const response = await axios.get(Api.getReservations(user.username));
+        const data = await response.data;
+        setReservations(await data.data);
+        toast.success("Reservation deleted successfully");
+      } else {
+        toast.error("There was an error");
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
   return (
     <div className={style.carItem}>
       <div className={style.left}>
@@ -26,6 +47,9 @@ const CarItem = ({ car, city, cost, starting_date, end_date }) => {
         <h4>
           City <span>{city}</span>
         </h4>
+        <RoundedButton  color={colors.red} inverted={false} type="submit" onClick ={ handleDelete } >
+            Delete Reservation
+        </RoundedButton>
       </div>
       <div className={style.right}>
         <h4 className={style.cost}>
@@ -40,8 +64,7 @@ const CarItem = ({ car, city, cost, starting_date, end_date }) => {
 };
 
 const MyReservations = () => {
-  const [reservations, setReservations] = useState([]);
-  const { user } = useStateContext();
+  const { user, reservations, setReservations } = useStateContext();
 
   const getData = async () => {
     try {
@@ -71,6 +94,7 @@ const MyReservations = () => {
 };
 
 CarItem.propTypes = {
+  id: PropTypes.number.isRequired,
   car: PropTypes.object.isRequired,
   city: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,
