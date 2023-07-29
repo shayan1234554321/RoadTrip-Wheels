@@ -91,6 +91,7 @@
 .carItem .left h4 {
   display: flex;
   align-items: center;
+  font-size: 14px;
 }
 
 .carItem .right img {
@@ -100,6 +101,7 @@
 @media screen and (max-width: 768px) {
   .addRemoveContainer h1 {
     margin-top: 8vh;
+    font-size: 20px;
     margin-bottom: 0;
   }
 
@@ -120,6 +122,6 @@
   }
 
   .carItem .left button {
-    top: 0;
+    top: 10px;
   }
 }

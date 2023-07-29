@@ -30,6 +30,7 @@ const CarItem = ({ id, car, city, cost, starting_date, end_date }) => {
       console.log(error)
     }
   };
+  
   return (
     <div className={style.carItem}>
       <div className={style.left}>

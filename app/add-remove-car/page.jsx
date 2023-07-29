@@ -9,8 +9,18 @@ import Popup from "@/components/popup";
 import toast from "react-hot-toast";
 import axios from "axios";
 import PropTypes from "prop-types";
+import Admins from "@/utilities/admins.json";
+import { useStateContext } from "@/context/StateContext";
 
-const CarItem = ({ id, name, description, image, cost_per_day, setData }) => {
+const CarItem = ({
+  id,
+  name,
+  description,
+  image,
+  cost_per_day,
+  setData,
+  isAdmin,
+}) => {
   const [loading, setLoading] = useState(false);
 
   const deleteCar = async () => {
@@ -43,9 +53,15 @@ const CarItem = ({ id, name, description, image, cost_per_day, setData }) => {
         <h4>
           Description <span>{description}</span>
         </h4>
-        <RoundedButton loading={loading} onClick={deleteCar} color={colors.red}>
-          REMOVE
-        </RoundedButton>
+        {isAdmin && (
+          <RoundedButton
+            loading={loading}
+            onClick={deleteCar}
+            color={colors.red}
+          >
+            REMOVE
+          </RoundedButton>
+        )}
       </div>
       <div className={style.right}>
         <div className={style.imageContainer}>
@@ -66,6 +82,11 @@ const AddRemoveCar = () => {
     description: "",
   });
   const [data, setData] = useState([]);
+  const { user } = useStateContext();
+  const isAdmin = Admins.find((admin) => user.username === admin);
+
+  console.log(user)
+  console.log(Admins)
 
   const handleChange = (e, name) => {
     setForm((prev) => ({ ...prev, [name]: e.target.value }));
@@ -137,16 +158,25 @@ const AddRemoveCar = () => {
 
   return (
     <div className={style.addRemoveContainer}>
-      <div className={style.addCar}>
-        <RoundedButton onClick={() => setShow(true)} color={colors.blue}>
-          ADD CAR
-        </RoundedButton>
-      </div>
+      {isAdmin && (
+        <div className={style.addCar}>
+          <RoundedButton onClick={() => setShow(true)} color={colors.blue}>
+            ADD CAR
+          </RoundedButton>
+        </div>
+      )}
       <h1>ALL CARS</h1>
       <div className={style.itemsContainer}>
         {data?.length > 0 ? (
           data.map((item, i) => {
-            return <CarItem key={item.name + i} {...item} setData={setData} />;
+            return (
+              <CarItem
+                key={item.name + i}
+                {...item}
+                setData={setData}
+                isAdmin={isAdmin}
+              />
+            );
           })
         ) : (
           <h2>No Cars Added</h2>
@@ -232,6 +262,7 @@ CarItem.propTypes = {
   image: PropTypes.string.isRequired,
   cost_per_day: PropTypes.number.isRequired,
   setData: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default AddRemoveCar;
