@@ -8,6 +8,7 @@ export const StateContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(0);
+  const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -24,7 +25,9 @@ export const StateContext = ({ children }) => {
         loggedIn,
         setLoggedIn,
         userId,
-        setUserId
+        setUserId,
+        reservations,
+        setReservations
       }}
     >
       {children}
